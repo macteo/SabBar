@@ -1,0 +1,408 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		95255EC81C4E3C790068FE1D /* SabBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 95255EC71C4E3C790068FE1D /* SabBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		95255ECF1C4E3C790068FE1D /* SabBar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95255EC41C4E3C790068FE1D /* SabBar.framework */; };
+		95255ED41C4E3C790068FE1D /* SabBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95255ED31C4E3C790068FE1D /* SabBarTests.swift */; };
+		95255EDF1C4E3CAD0068FE1D /* SabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95255EDE1C4E3CAD0068FE1D /* SabBar.swift */; };
+		95255EE21C4E41E20068FE1D /* SabBar.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 95255EE11C4E41E20068FE1D /* SabBar.podspec */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		95255ED01C4E3C790068FE1D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 95255EBB1C4E3C780068FE1D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 95255EC31C4E3C790068FE1D;
+			remoteInfo = SabBar;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		95255EC41C4E3C790068FE1D /* SabBar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SabBar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		95255EC71C4E3C790068FE1D /* SabBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SabBar.h; sourceTree = "<group>"; };
+		95255EC91C4E3C790068FE1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		95255ECE1C4E3C790068FE1D /* SabBarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SabBarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		95255ED31C4E3C790068FE1D /* SabBarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SabBarTests.swift; sourceTree = "<group>"; };
+		95255ED51C4E3C790068FE1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		95255EDE1C4E3CAD0068FE1D /* SabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SabBar.swift; sourceTree = "<group>"; };
+		95255EE01C4E40D80068FE1D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		95255EE11C4E41E20068FE1D /* SabBar.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SabBar.podspec; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		95255EC01C4E3C790068FE1D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		95255ECB1C4E3C790068FE1D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95255ECF1C4E3C790068FE1D /* SabBar.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		95255EBA1C4E3C780068FE1D = {
+			isa = PBXGroup;
+			children = (
+				95255EE11C4E41E20068FE1D /* SabBar.podspec */,
+				95255EE01C4E40D80068FE1D /* README.md */,
+				95255EC61C4E3C790068FE1D /* Sources */,
+				95255ED21C4E3C790068FE1D /* SabBarTests */,
+				95255EC51C4E3C790068FE1D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		95255EC51C4E3C790068FE1D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				95255EC41C4E3C790068FE1D /* SabBar.framework */,
+				95255ECE1C4E3C790068FE1D /* SabBarTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		95255EC61C4E3C790068FE1D /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				95255EDE1C4E3CAD0068FE1D /* SabBar.swift */,
+				95255EC71C4E3C790068FE1D /* SabBar.h */,
+				95255EC91C4E3C790068FE1D /* Info.plist */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		95255ED21C4E3C790068FE1D /* SabBarTests */ = {
+			isa = PBXGroup;
+			children = (
+				95255ED31C4E3C790068FE1D /* SabBarTests.swift */,
+				95255ED51C4E3C790068FE1D /* Info.plist */,
+			);
+			path = SabBarTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		95255EC11C4E3C790068FE1D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95255EC81C4E3C790068FE1D /* SabBar.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		95255EC31C4E3C790068FE1D /* SabBar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 95255ED81C4E3C790068FE1D /* Build configuration list for PBXNativeTarget "SabBar" */;
+			buildPhases = (
+				95255EBF1C4E3C790068FE1D /* Sources */,
+				95255EC01C4E3C790068FE1D /* Frameworks */,
+				95255EC11C4E3C790068FE1D /* Headers */,
+				95255EC21C4E3C790068FE1D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SabBar;
+			productName = SabBar;
+			productReference = 95255EC41C4E3C790068FE1D /* SabBar.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		95255ECD1C4E3C790068FE1D /* SabBarTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 95255EDB1C4E3C790068FE1D /* Build configuration list for PBXNativeTarget "SabBarTests" */;
+			buildPhases = (
+				95255ECA1C4E3C790068FE1D /* Sources */,
+				95255ECB1C4E3C790068FE1D /* Frameworks */,
+				95255ECC1C4E3C790068FE1D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				95255ED11C4E3C790068FE1D /* PBXTargetDependency */,
+			);
+			name = SabBarTests;
+			productName = SabBarTests;
+			productReference = 95255ECE1C4E3C790068FE1D /* SabBarTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		95255EBB1C4E3C780068FE1D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = Dolomate;
+				TargetAttributes = {
+					95255EC31C4E3C790068FE1D = {
+						CreatedOnToolsVersion = 7.2;
+					};
+					95255ECD1C4E3C790068FE1D = {
+						CreatedOnToolsVersion = 7.2;
+					};
+				};
+			};
+			buildConfigurationList = 95255EBE1C4E3C780068FE1D /* Build configuration list for PBXProject "SabBar" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 95255EBA1C4E3C780068FE1D;
+			productRefGroup = 95255EC51C4E3C790068FE1D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				95255EC31C4E3C790068FE1D /* SabBar */,
+				95255ECD1C4E3C790068FE1D /* SabBarTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		95255EC21C4E3C790068FE1D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95255EE21C4E41E20068FE1D /* SabBar.podspec in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		95255ECC1C4E3C790068FE1D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		95255EBF1C4E3C790068FE1D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95255EDF1C4E3CAD0068FE1D /* SabBar.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		95255ECA1C4E3C790068FE1D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95255ED41C4E3C790068FE1D /* SabBarTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		95255ED11C4E3C790068FE1D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 95255EC31C4E3C790068FE1D /* SabBar */;
+			targetProxy = 95255ED01C4E3C790068FE1D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		95255ED61C4E3C790068FE1D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		95255ED71C4E3C790068FE1D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		95255ED91C4E3C790068FE1D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Sources/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dolomate.SabBar;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		95255EDA1C4E3C790068FE1D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Sources/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dolomate.SabBar;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		95255EDC1C4E3C790068FE1D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = SabBarTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dolomate.SabBarTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		95255EDD1C4E3C790068FE1D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = SabBarTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dolomate.SabBarTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		95255EBE1C4E3C780068FE1D /* Build configuration list for PBXProject "SabBar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				95255ED61C4E3C790068FE1D /* Debug */,
+				95255ED71C4E3C790068FE1D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		95255ED81C4E3C790068FE1D /* Build configuration list for PBXNativeTarget "SabBar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				95255ED91C4E3C790068FE1D /* Debug */,
+				95255EDA1C4E3C790068FE1D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		95255EDB1C4E3C790068FE1D /* Build configuration list for PBXNativeTarget "SabBarTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				95255EDC1C4E3C790068FE1D /* Debug */,
+				95255EDD1C4E3C790068FE1D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 95255EBB1C4E3C780068FE1D /* Project object */;
+}

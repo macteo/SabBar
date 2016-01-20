@@ -1,0 +1,21 @@
+{
+  "name": "SabBar",
+  "version": "0.1.0",
+  "summary": "Drop-in UITabBarController subclass that support lateral tabs based on size classes.",
+  "description": "Drop-in `UITabBarController` subclass that support lateral tabs based on size classes.",
+  "homepage": "https://github.com/macteo/SabBar",
+  "license": "MIT",
+  "authors": {
+    "Matteo Gavagnin": "m@macteo.it"
+  },
+  "social_media_url": "https://twitter.com/@macteo",
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source": {
+    "git": "https://github.com/macteo/SabBar.git",
+    "tag": "v0.1.0"
+  },
+  "source_files": "Sources/**/*.{swift}",
+  "requires_arc": true
+}

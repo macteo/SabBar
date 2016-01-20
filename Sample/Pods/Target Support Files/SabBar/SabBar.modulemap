@@ -1,0 +1,6 @@
+framework module SabBar {
+  umbrella header "SabBar-umbrella.h"
+
+  export *
+  module * { export * }
+}

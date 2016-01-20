@@ -1,0 +1,6 @@
+platform :ios, '8.0'
+use_frameworks!
+
+target "SabBarSample" do
+  pod 'SabBar', :path => '..'
+end
