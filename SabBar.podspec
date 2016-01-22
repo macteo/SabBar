@@ -2,7 +2,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "SabBar"
-  s.version      = "0.9.0"
+  s.version      = "0.9.1"
   s.summary      = "Drop-in UITabBarController subclass that shows a sidebar with tabs based on trait collections."
 
   s.description  = <<-DESC
