@@ -1,0 +1,31 @@
+#!/bin/bash
+# Downsamples icon image to cover every format.
+
+# An icon-1024.png must be present to create the other ones in the folder where this script resides.
+
+convert "icon-1024.png" -resize '196x196' "icon-98@2x.png"
+convert "icon-1024.png" -resize '172x172' "icon-86@2x.png"
+convert "icon-1024.png" -resize '152x152' "icon-76@2x.png"
+convert "icon-1024.png" -resize '76x76' "icon-76.png"
+convert "icon-1024.png" -resize '144x144' "icon-72@2x.png"
+convert "icon-1024.png" -resize '72x72' "icon-72.png"
+convert "icon-1024.png" -resize '180x180' "icon-60@3x.png"
+convert "icon-1024.png" -resize '120x120' "icon-60@2x.png"
+convert "icon-1024.png" -resize '114x114' "icon-57@2x.png"
+convert "icon-1024.png" -resize '57x57' "icon-57.png"
+convert "icon-1024.png" -resize '100x100' "icon-50@2x.png"
+convert "icon-1024.png" -resize '50x50' "icon-50.png"
+convert "icon-1024.png" -resize '88x88' "icon-44@2x.png"
+convert "icon-1024.png" -resize '120x120' "icon-40@3x.png"
+convert "icon-1024.png" -resize '80x80' "icon-40@2x.png"
+convert "icon-1024.png" -resize '40x40' "icon-40.png"
+convert "icon-1024.png" -resize '88x88' "icon-29@3x.png"
+convert "icon-1024.png" -resize '87x87' "icon-29@3x-87x87.png"
+convert "icon-1024.png" -resize '58x58' "icon-29@2x.png"
+convert "icon-1024.png" -resize '29x29' "icon-29.png"
+convert "icon-1024.png" -resize '88x88' "icon-29@3x.png"
+convert "icon-1024.png" -resize '58x58' "icon-29@2x.png"
+convert "icon-1024.png" -resize '36x36' "icon-27.5@2x.png"
+convert "icon-1024.png" -resize '29x29' "icon-22@2x.png"
+convert "icon-1024.png" -resize '512x512' "icon-512.png"
+convert "icon-1024.png" -resize '167x167' "icon-83.5@2x.png"

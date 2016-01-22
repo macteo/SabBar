@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>SabBar  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+  </head>
+  <body>
+    <a title="SabBar  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">SabBar Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/macteo/sabbar"><img src="img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">SabBar Reference</a>
+        <img id="carat" src="img/carat.png" />
+        SabBar  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/SabBarController.html">SabBarController</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/SabBarControllerDelegate.html">SabBarControllerDelegate</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            
+            <a href='#sabbar' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='sabbar'>SabBar</h1>
+
+<p>Drop-in <code>UITabBarController</code> subclass that shows a sidebar with tabs based on trait collections.</p>
+
+<p><a href="https://raw.githubusercontent.com/macteo/SabBar/master/LICENSE"><img src="https://img.shields.io/cocoapods/l/SabBar.svg" alt="License MIT"></a> <a href="https://cocoapods.org/?q=SabBar"><img src="https://img.shields.io/cocoapods/v/SabBar.svg" alt="Version"></a> <a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage compatible"></a> <a href="https://travis-ci.org/macteo/SabBar"><img src="https://travis-ci.org/macteo/SabBar.svg?branch=master" alt="travis-ci"></a>
+<a href="https://codecov.io/github/macteo/SabBar?branch=master"><img src="https://codecov.io/github/macteo/SabBar/coverage.svg?branch=master" alt="codecov.io"></a> <img src="https://img.shields.io/badge/language-Swift%202.1-EB7943.svg" alt="Swift 2"> <img src="https://img.shields.io/badge/iOS-8+-EB7943.svg" alt="iOS 8+"></p>
+
+<p><img src="https://raw.githubusercontent.com/macteo/SabBar/master/Assets/Readme/split-view.gif" alt="split-view"></p>
+<a href='#description' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='description'>Description</h2>
+
+<p><strong>SabBar</strong> aims to let you easily choose to show a sidebar with the same functionality of a <code>UITabBar</code> inside of your application, based on trait collections. To do so we&rsquo;ve created a <code>UITabBarController</code> subclass called <code>SabBarController</code> that does most of the work. 
+We&rsquo;ve also added few options to customize the appearance of those sidebar (width, tab height, top navigation bar, header view, ecc).</p>
+
+<p><img src="https://raw.githubusercontent.com/macteo/SabBar/master/Assets/Readme/iPhone-landscape.png" alt="iPhone-landscape"></p>
+<a href='#features' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='features'>Features</h2>
+
+<ul>
+<li>[x] Ready to use, just swap a class.</li>
+<li>[x] iPad and iPhone compatible.</li>
+<li>[x] Single drop-in file.</li>
+<li>[x] Customize sidebar appearance based on trait collections.</li>
+<li>[x] No dependancies.</li>
+<li>[x] Tests.</li>
+<li>[x] Supports accessibility.</li>
+<li>[x] Optional header view.</li>
+<li>[x] Work well with and without navigation bars.</li>
+<li>[x] Automatically grabs customizations from the <code>UITabBar</code>.</li>
+<li>[x] Full documentation.</li>
+<li>[ ] Support top, bottom and centered sidebar cells.</li>
+<li>[ ] Support sidebar translucency.</li>
+</ul>
+<a href='#requirements' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='requirements'>Requirements</h2>
+
+<ul>
+<li>iOS 8.0+</li>
+<li>Xcode 7.1+</li>
+</ul>
+<a href='#documentation' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='documentation'>Documentation</h2>
+
+<p><a href="http://cocoadocs.org/docsets/SabBar">Online documentation</a> is available curtesy of CocoaDocs. You can also navigate it offline downloading the source code and looking inside the <em>docs</em> folder.</p>
+<a href='#usage' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='usage'>Usage</h2>
+
+<p>Import <em>SabBar</em> module into your Swift class</p>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">SabBar</span>
+</code></pre>
+
+<p>or if you are writing in Objective-C</p>
+<pre class="highlight objective_c"><code><span class="cp">#import &lt;SabBar/SabBar-Swift.h&gt;
+</span></code></pre>
+
+<blockquote>
+<p>Keep in mind the you have to let the project generate the Bridging Header otherwise the integration may fail.</p>
+</blockquote>
+
+<p>Just replace any <code>UITabBarController</code> instance with a <code>SabBarController</code> one directly on Storyboards or programmatically.</p>
+
+<p><img src="https://raw.githubusercontent.com/macteo/SabBar/master/Assets/Readme/custom-class.jpg" alt="custom-class"></p>
+
+<p>🎉</p>
+<a href='#sample_project' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='sample_project'>Sample project</h3>
+
+<p>In the <em>Sample</em> folder you can find a sample project with few lines of code in the <code>AppDelegate</code> class for a jumpstart.</p>
+
+<blockquote>
+<p>Sample code is written in Swift but Objective-C should be supported too, if you find an incompatibility please open an issue.</p>
+</blockquote>
+<a href='#installation' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='installation'>Installation</h2>
+<a href='#cocoapods' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='cocoapods'>CocoaPods</h3>
+
+<p><a href="http://cocoapods.org">CocoaPods</a> is a dependency manager for Cocoa projects. You can install it with the following command:</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>gem install cocoapods
+</code></pre>
+
+<blockquote>
+<p>CocoaPods 0.39.0+ is required to build Marklight.</p>
+</blockquote>
+
+<p>To integrate <strong>SabBar</strong> into your Xcode project using CocoaPods, specify it in your <code>Podfile</code>:</p>
+<pre class="highlight ruby"><code><span class="n">source</span> <span class="s1">'https://github.com/CocoaPods/Specs.git'</span>
+<span class="n">platform</span> <span class="ss">:ios</span><span class="p">,</span> <span class="s1">'8.0'</span>
+<span class="n">use_frameworks!</span>
+<span class="n">target</span> <span class="s2">"YourTargetName"</span> <span class="k">do</span>
+    <span class="n">pod</span> <span class="s1">'SabBar'</span>
+<span class="k">end</span>
+</code></pre>
+
+<p>Then, run the following command:</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>pod install
+</code></pre>
+<a href='#carthage' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='carthage'>Carthage</h3>
+
+<p><a href="https://github.com/Carthage/Carthage">Carthage</a> is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.</p>
+
+<p>You can install <a href="https://github.com/Carthage/Carthage">Carthage</a> with <a href="http://brew.sh/">Homebrew</a> using the following command:</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>brew update
+<span class="gp">$ </span>brew install carthage
+</code></pre>
+
+<p>To integrate Marklight into your Xcode project using <a href="https://github.com/Carthage/Carthage">Carthage</a>, specify it in your <code>Cartfile</code>:</p>
+<pre class="highlight plaintext"><code>github "macteo/SabBar"
+</code></pre>
+
+<p>Run <code>carthage update --platform iOS</code> to build the framework and drag the built <code>SabBar.framework</code> into your Xcode project.</p>
+<a href='#manually_as_a_framework' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='manually_as_a_framework'>Manually as a Framework</h3>
+
+<p>Add the <em>SabBar</em> Xcode project to your own. Then add the <code>SabBar</code> framework to the embedded binaries of your app&rsquo;s target.</p>
+<a href='#manually_as_source_file' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='manually_as_source_file'>Manually as source file</h3>
+
+<p>Just drag &amp; drop the <em>SabBar.swift</em> source file from the <em>Sources</em> folder in your Xcode project.</p>
+<a href='#issues_and_bugs' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='issues_and_bugs'>Issues and bugs</h2>
+
+<p>Feel free to open an <a href="https://github.com/macteo/SabBar/issues">issue</a> reporting a problem or requesting a new feature.</p>
+<a href='#acknowledgements' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='acknowledgements'>Acknowledgements</h2>
+
+<ul>
+<li>Matteo Gavagnin – <a href="https://twitter.com/macteo">@macteo</a></li>
+<li><a href="http://dimension.it">Dimension S.r.l.</a></li>
+</ul>
+<a href='#license' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='license'>License</h2>
+
+<p>SabBar is released under the MIT license. See <a href="https://raw.githubusercontent.com/macteo/SabBar/master/LICENSE">LICENSE</a> for details.</p>
+
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2016 <a class="link" href="http://macteo.it" target="_blank" rel="external">MacTeo</a>. All rights reserved. (Last updated: 2016-01-22)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.4.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

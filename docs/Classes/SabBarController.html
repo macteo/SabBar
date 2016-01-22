@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>SabBarController Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/SabBarController" class="dashAnchor"></a>
+    <a title="SabBarController Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">SabBar Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/macteo/sabbar"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">SabBar Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        SabBarController Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/SabBarController.html">SabBarController</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/SabBarControllerDelegate.html">SabBarControllerDelegate</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>SabBarController</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">SabBarController</span><span class="p">:</span> <span class="kt">UITabBarController</span><span class="p">,</span> <span class="kt">UITableViewDataSource</span><span class="p">,</span> <span class="kt">UITableViewDelegate</span></code></pre>
+
+                </div>
+              </div>
+            <p><code>SabBarController</code> is a subclass of <code>UITabBarController</code> that adds the option
+to show a sidebar with tabs instead of the classic <code>UITabBar</code> based on trait 
+collections.</p>
+
+<p><img src="https://raw.githubusercontent.com/macteo/SabBar/master/Assets/Readme/iPhone-landscape.png" alt="iPhone-landscape"></p>
+
+<p>In order to use it, just instantiate it instead of the standard 
+<code>UITabBarController</code> programmatically or within Storyboards.</p>
+
+<p><img src="https://raw.githubusercontent.com/macteo/SabBar/master/Assets/Readme/custom-class.jpg" alt="custom-class"></p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/User%20customizable%20properties"></a>
+                <a name="//apple_ref/swift/Section/User customizable properties" class="dashAnchor"></a>
+                <a href="#/User%20customizable%20properties">
+                  <h3 class="section-name">User customizable properties</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC6SabBar16SabBarController12sidebarWidthV12CoreGraphics7CGFloat"></a>
+                    <a name="//apple_ref/swift/Property/sidebarWidth" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC6SabBar16SabBarController12sidebarWidthV12CoreGraphics7CGFloat">sidebarWidth</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Specify the sidebar width, default 80 points.</p>
+
+<p><img src="https://raw.githubusercontent.com/macteo/SabBar/master/Assets/Readme/sidebar-width.png" alt="sidebar-width"></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@IBInspectable</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">sidebarWidth</span> <span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mf">80.0</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/macteo/sabbar/tree/master/Sources/SabBar.swift#L101">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC6SabBar16SabBarController9tabHeightV12CoreGraphics7CGFloat"></a>
+                    <a name="//apple_ref/swift/Property/tabHeight" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC6SabBar16SabBarController9tabHeightV12CoreGraphics7CGFloat">tabHeight</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Specify the height of each tab inside the sidebar, dafault 60 points.</p>
+
+<p><img src="https://raw.githubusercontent.com/macteo/SabBar/master/Assets/Readme/tab-height.png" alt="sidebar-width"></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@IBInspectable</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">tabHeight</span> <span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mf">60.0</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/macteo/sabbar/tree/master/Sources/SabBar.swift#L108">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC6SabBar16SabBarController13hasNavigationSb"></a>
+                    <a name="//apple_ref/swift/Property/hasNavigation" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC6SabBar16SabBarController13hasNavigationSb">hasNavigation</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>By default the sidebar starts directly from the top of the view, use this
+property to ad a <code>UINavigationBar</code> above it.</p>
+
+<p><img src="https://raw.githubusercontent.com/macteo/SabBar/master/Assets/Readme/has-navigation.png" alt="sidebar-width"></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@IBInspectable</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">hasNavigation</span> <span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/macteo/sabbar/tree/master/Sources/SabBar.swift#L116">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC6SabBar16SabBarController14separateHeaderSb"></a>
+                    <a name="//apple_ref/swift/Property/separateHeader" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC6SabBar16SabBarController14separateHeaderSb">separateHeader</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>If you has enabled the <code><a href="../Classes/SabBarController.html#/s:vC6SabBar16SabBarController13hasNavigationSb">hasNavigation</a></code> property, you may want to add a
+hairline border right beside it to function as separator.</p>
+
+<p><img src="https://raw.githubusercontent.com/macteo/SabBar/master/Assets/Readme/separate-header.png" alt="sidebar-width"></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@IBInspectable</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">separateHeader</span> <span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/macteo/sabbar/tree/master/Sources/SabBar.swift#L124">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC6SabBar16SabBarController13navigationBarCSo15UINavigationBar"></a>
+                    <a name="//apple_ref/swift/Property/navigationBar" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC6SabBar16SabBarController13navigationBarCSo15UINavigationBar">navigationBar</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Access the navigation bar, if enabled, to set its tint and behavior.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">navigationBar</span> <span class="o">=</span> <span class="kt">UINavigationBar</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/macteo/sabbar/tree/master/Sources/SabBar.swift#L129">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC6SabBar16SabBarController15backgroundColorCSo7UIColor"></a>
+                    <a name="//apple_ref/swift/Property/backgroundColor" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC6SabBar16SabBarController15backgroundColorCSo7UIColor">backgroundColor</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Specify a background color behind the sidebar, this will affect its color 
+if translucent. Default color is white.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@IBInspectable</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">backgroundColor</span> <span class="p">:</span> <span class="kt">UIColor</span> <span class="o">=</span> <span class="kt">UIColor</span><span class="o">.</span><span class="nf">whiteColor</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/macteo/sabbar/tree/master/Sources/SabBar.swift#L135-L139">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC6SabBar16SabBarController9imageTintGSqCSo7UIColor_"></a>
+                    <a name="//apple_ref/swift/Property/imageTint" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC6SabBar16SabBarController9imageTintGSqCSo7UIColor_">imageTint</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Choose a tint for the tabBar and the sidebar.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@IBInspectable</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">imageTint</span> <span class="p">:</span> <span class="kt">UIColor</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/macteo/sabbar/tree/master/Sources/SabBar.swift#L144-L148">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC6SabBar16SabBarController10headerViewGSqCSo6UIView_"></a>
+                    <a name="//apple_ref/swift/Property/headerView" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC6SabBar16SabBarController10headerViewGSqCSo6UIView_">headerView</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>If you enabled the <code><a href="../Classes/SabBarController.html#/s:vC6SabBar16SabBarController13hasNavigationSb">hasNavigation</a></code> property, you can add a <code>UIView</code>, or one
+of its subclasses like <code>UIButton</code>. This will be automatically centered 
+above the sidebar. Keep in mind that If you exceed 32 points for its height
+it will overlap the navigation bar on devices smaller that the iPhone 6+ 
+in landscape.</p>
+
+<p><img src="https://raw.githubusercontent.com/macteo/SabBar/master/Assets/Readme/header-view.png" alt="sidebar-width"></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@IBOutlet</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">headerView</span> <span class="p">:</span> <span class="kt">UIView</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/macteo/sabbar/tree/master/Sources/SabBar.swift#L159-L176">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC6SabBar16SabBarController14sabBarDelegateGSqPS_24SabBarControllerDelegate__"></a>
+                    <a name="//apple_ref/swift/Property/sabBarDelegate" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC6SabBar16SabBarController14sabBarDelegateGSqPS_24SabBarControllerDelegate__">sabBarDelegate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>You can register a class that conforms to the <code><a href="../Protocols/SabBarControllerDelegate.html">SabBarControllerDelegate</a></code>
+protocol in order to manage if you want to show or hide the sidebar, based
+on trait collections.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@IBOutlet</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">sabBarDelegate</span> <span class="p">:</span> <span class="kt">SabBarControllerDelegate</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/macteo/sabbar/tree/master/Sources/SabBar.swift#L183">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Sidebar%20visibility"></a>
+                <a name="//apple_ref/swift/Section/Sidebar visibility" class="dashAnchor"></a>
+                <a href="#/Sidebar%20visibility">
+                  <h3 class="section-name">Sidebar visibility</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC6SabBar16SabBarController13toggleSidebarFS0_FT7visibleSb_T_"></a>
+                    <a name="//apple_ref/swift/Method/toggleSidebar(visible:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC6SabBar16SabBarController13toggleSidebarFS0_FT7visibleSb_T_">toggleSidebar(visible:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Toggle the Sidebar visibility programmatically.</p>
+
+<p>Sidebar and tabBar are mutually exclusive.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">toggleSidebar</span><span class="p">(</span><span class="n">visible</span> <span class="nv">visible</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>visible</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>if the sidebar should be visibile or not.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/macteo/sabbar/tree/master/Sources/SabBar.swift#L194-L204">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/View%20lifecycle"></a>
+                <a name="//apple_ref/swift/Section/View lifecycle" class="dashAnchor"></a>
+                <a href="#/View%20lifecycle">
+                  <h3 class="section-name">View lifecycle</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC6SabBar16SabBarController11viewDidLoadFS0_FT_T_"></a>
+                    <a name="//apple_ref/swift/Method/viewDidLoad()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC6SabBar16SabBarController11viewDidLoadFS0_FT_T_">viewDidLoad()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Building sidebar view and setting so many layout constraints.</p>
+
+<div class="aside aside-warning">
+          <p class="aside-title">Warning</p>
+          You are not supposed to call this method directly.
+
+        </div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">override</span> <span class="kd">public</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/macteo/sabbar/tree/master/Sources/SabBar.swift#L213-L218">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC6SabBar16SabBarController14viewWillAppearFS0_FSbT_"></a>
+                    <a name="//apple_ref/swift/Method/viewWillAppear(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC6SabBar16SabBarController14viewWillAppearFS0_FSbT_">viewWillAppear(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>We ensure to show or hide the sidebar and the tabBar based on the current trait collection.</p>
+
+<div class="aside aside-warning">
+          <p class="aside-title">Warning</p>
+          You are not supposed to call this method directly.
+
+        </div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">override</span> <span class="kd">public</span> <span class="kd">func</span> <span class="nf">viewWillAppear</span><span class="p">(</span><span class="nv">animated</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/macteo/sabbar/tree/master/Sources/SabBar.swift#L225-L229">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC6SabBar16SabBarController13viewDidAppearFS0_FSbT_"></a>
+                    <a name="//apple_ref/swift/Method/viewDidAppear(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC6SabBar16SabBarController13viewDidAppearFS0_FSbT_">viewDidAppear(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Just selecting the correct sidebar tab.</p>
+
+<div class="aside aside-warning">
+          <p class="aside-title">Warning</p>
+          You are not supposed to call this method directly.
+
+        </div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">override</span> <span class="kd">public</span> <span class="kd">func</span> <span class="nf">viewDidAppear</span><span class="p">(</span><span class="nv">animated</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/macteo/sabbar/tree/master/Sources/SabBar.swift#L236-L243">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Sidebar%20table%20view%20delegate"></a>
+                <a name="//apple_ref/swift/Section/Sidebar table view delegate" class="dashAnchor"></a>
+                <a href="#/Sidebar%20table%20view%20delegate">
+                  <h3 class="section-name">Sidebar table view delegate</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC6SabBar16SabBarController9tableViewFS0_FTCSo11UITableView23heightForRowAtIndexPathCSo11NSIndexPath_V12CoreGraphics7CGFloat"></a>
+                    <a name="//apple_ref/swift/Method/tableView(_:heightForRowAtIndexPath:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC6SabBar16SabBarController9tableViewFS0_FTCSo11UITableView23heightForRowAtIndexPathCSo11NSIndexPath_V12CoreGraphics7CGFloat">tableView(_:heightForRowAtIndexPath:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sidebar is a table view and in order to populate it with tabs the 
+<code><a href="../Classes/SabBarController.html">SabBarController</a></code> is its delegate.</p>
+
+<div class="aside aside-warning">
+          <p class="aside-title">Warning</p>
+          You are not supposed to call this method directly.
+
+        </div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">tableView</span><span class="p">(</span><span class="nv">tableView</span><span class="p">:</span> <span class="kt">UITableView</span><span class="p">,</span> <span class="n">heightForRowAtIndexPath</span> <span class="nv">indexPath</span><span class="p">:</span> <span class="kt">NSIndexPath</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CGFloat</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/macteo/sabbar/tree/master/Sources/SabBar.swift#L287-L289">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC6SabBar16SabBarController9tableViewFS0_FTCSo11UITableView24heightForHeaderInSectionSi_V12CoreGraphics7CGFloat"></a>
+                    <a name="//apple_ref/swift/Method/tableView(_:heightForHeaderInSection:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC6SabBar16SabBarController9tableViewFS0_FTCSo11UITableView24heightForHeaderInSectionSi_V12CoreGraphics7CGFloat">tableView(_:heightForHeaderInSection:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sidebar is a table view and in order to populate it with tabs the
+<code><a href="../Classes/SabBarController.html">SabBarController</a></code> is its delegate.</p>
+
+<div class="aside aside-warning">
+          <p class="aside-title">Warning</p>
+          You are not supposed to call this method directly.
+
+        </div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">tableView</span><span class="p">(</span><span class="nv">tableView</span><span class="p">:</span> <span class="kt">UITableView</span><span class="p">,</span> <span class="n">heightForHeaderInSection</span> <span class="nv">section</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CGFloat</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/macteo/sabbar/tree/master/Sources/SabBar.swift#L297-L299">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC6SabBar16SabBarController9tableViewFS0_FTCSo11UITableView22viewForHeaderInSectionSi_GSqCSo6UIView_"></a>
+                    <a name="//apple_ref/swift/Method/tableView(_:viewForHeaderInSection:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC6SabBar16SabBarController9tableViewFS0_FTCSo11UITableView22viewForHeaderInSectionSi_GSqCSo6UIView_">tableView(_:viewForHeaderInSection:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sidebar is a table view and in order to populate it with tabs the
+<code><a href="../Classes/SabBarController.html">SabBarController</a></code> is its delegate.</p>
+
+<div class="aside aside-warning">
+          <p class="aside-title">Warning</p>
+          You are not supposed to call this method directly.
+
+        </div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">tableView</span><span class="p">(</span><span class="nv">tableView</span><span class="p">:</span> <span class="kt">UITableView</span><span class="p">,</span> <span class="n">viewForHeaderInSection</span> <span class="nv">section</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIView</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/macteo/sabbar/tree/master/Sources/SabBar.swift#L307-L311">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC6SabBar16SabBarController9tableViewFS0_FTCSo11UITableView23didSelectRowAtIndexPathCSo11NSIndexPath_T_"></a>
+                    <a name="//apple_ref/swift/Method/tableView(_:didSelectRowAtIndexPath:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC6SabBar16SabBarController9tableViewFS0_FTCSo11UITableView23didSelectRowAtIndexPathCSo11NSIndexPath_T_">tableView(_:didSelectRowAtIndexPath:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sidebar is a table view and in order to populate it with tabs the
+<code><a href="../Classes/SabBarController.html">SabBarController</a></code> is its delegate.</p>
+
+<div class="aside aside-warning">
+          <p class="aside-title">Warning</p>
+          You are not supposed to call this method directly.
+
+        </div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">tableView</span><span class="p">(</span><span class="nv">tableView</span><span class="p">:</span> <span class="kt">UITableView</span><span class="p">,</span> <span class="n">didSelectRowAtIndexPath</span> <span class="nv">indexPath</span><span class="p">:</span> <span class="kt">NSIndexPath</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/macteo/sabbar/tree/master/Sources/SabBar.swift#L319-L321">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Sidebar%20table%20view%20data%20source"></a>
+                <a name="//apple_ref/swift/Section/Sidebar table view data source" class="dashAnchor"></a>
+                <a href="#/Sidebar%20table%20view%20data%20source">
+                  <h3 class="section-name">Sidebar table view data source</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC6SabBar16SabBarController27numberOfSectionsInTableViewFS0_FCSo11UITableViewSi"></a>
+                    <a name="//apple_ref/swift/Method/numberOfSectionsInTableView(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC6SabBar16SabBarController27numberOfSectionsInTableViewFS0_FCSo11UITableViewSi">numberOfSectionsInTableView(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sidebar is a table view and in order to populate it with tabs the
+<code><a href="../Classes/SabBarController.html">SabBarController</a></code> is its data source.</p>
+
+<div class="aside aside-warning">
+          <p class="aside-title">Warning</p>
+          You are not supposed to call this method directly.
+
+        </div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">numberOfSectionsInTableView</span><span class="p">(</span><span class="nv">tableView</span><span class="p">:</span> <span class="kt">UITableView</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/macteo/sabbar/tree/master/Sources/SabBar.swift#L331-L333">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC6SabBar16SabBarController9tableViewFS0_FTCSo11UITableView21numberOfRowsInSectionSi_Si"></a>
+                    <a name="//apple_ref/swift/Method/tableView(_:numberOfRowsInSection:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC6SabBar16SabBarController9tableViewFS0_FTCSo11UITableView21numberOfRowsInSectionSi_Si">tableView(_:numberOfRowsInSection:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sidebar is a table view and in order to populate it with tabs the
+<code><a href="../Classes/SabBarController.html">SabBarController</a></code> is its data source.</p>
+
+<div class="aside aside-warning">
+          <p class="aside-title">Warning</p>
+          You are not supposed to call this method directly.
+
+        </div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">tableView</span><span class="p">(</span><span class="nv">tableView</span><span class="p">:</span> <span class="kt">UITableView</span><span class="p">,</span> <span class="n">numberOfRowsInSection</span> <span class="nv">section</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/macteo/sabbar/tree/master/Sources/SabBar.swift#L341-L346">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC6SabBar16SabBarController9tableViewFS0_FTCSo11UITableView21cellForRowAtIndexPathCSo11NSIndexPath_CSo15UITableViewCell"></a>
+                    <a name="//apple_ref/swift/Method/tableView(_:cellForRowAtIndexPath:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC6SabBar16SabBarController9tableViewFS0_FTCSo11UITableView21cellForRowAtIndexPathCSo11NSIndexPath_CSo15UITableViewCell">tableView(_:cellForRowAtIndexPath:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sidebar is a table view and in order to populate it with tabs the
+<code><a href="../Classes/SabBarController.html">SabBarController</a></code> is its data source.</p>
+
+<div class="aside aside-warning">
+          <p class="aside-title">Warning</p>
+          You are not supposed to call this method directly, but it can 
+be freely overriden in order to customize the cell appearance.
+
+        </div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">tableView</span><span class="p">(</span><span class="nv">tableView</span><span class="p">:</span> <span class="kt">UITableView</span><span class="p">,</span> <span class="n">cellForRowAtIndexPath</span> <span class="nv">indexPath</span><span class="p">:</span> <span class="kt">NSIndexPath</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UITableViewCell</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/macteo/sabbar/tree/master/Sources/SabBar.swift#L355-L376">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Tab%20bar%20delegate"></a>
+                <a name="//apple_ref/swift/Section/Tab bar delegate" class="dashAnchor"></a>
+                <a href="#/Tab%20bar%20delegate">
+                  <h3 class="section-name">Tab bar delegate</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC6SabBar16SabBarController6tabBarFS0_FTCSo8UITabBar13didSelectItemCSo12UITabBarItem_T_"></a>
+                    <a name="//apple_ref/swift/Method/tabBar(_:didSelectItem:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC6SabBar16SabBarController6tabBarFS0_FTCSo8UITabBar13didSelectItemCSo12UITabBarItem_T_">tabBar(_:didSelectItem:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>We register ourself as <code>UITabBarDelegate</code> in order to detect tab changes and
+update also the selected sidebar tab.</p>
+
+<div class="aside aside-warning">
+          <p class="aside-title">Warning</p>
+          You are not supposed to call this method directly.
+
+        </div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">override</span> <span class="kd">public</span> <span class="kd">func</span> <span class="nf">tabBar</span><span class="p">(</span><span class="nv">tabBar</span><span class="p">:</span> <span class="kt">UITabBar</span><span class="p">,</span> <span class="n">didSelectItem</span> <span class="nv">item</span><span class="p">:</span> <span class="kt">UITabBarItem</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/macteo/sabbar/tree/master/Sources/SabBar.swift#L386-L388">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Adapt%20layout%20to%20trait%20collections"></a>
+                <a name="//apple_ref/swift/Section/Adapt layout to trait collections" class="dashAnchor"></a>
+                <a href="#/Adapt%20layout%20to%20trait%20collections">
+                  <h3 class="section-name">Adapt layout to trait collections</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC6SabBar16SabBarController31willTransitionToTraitCollectionFS0_FTCSo17UITraitCollection25withTransitionCoordinatorPSo37UIViewControllerTransitionCoordinator__T_"></a>
+                    <a name="//apple_ref/swift/Method/willTransitionToTraitCollection(_:withTransitionCoordinator:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC6SabBar16SabBarController31willTransitionToTraitCollectionFS0_FTCSo17UITraitCollection25withTransitionCoordinatorPSo37UIViewControllerTransitionCoordinator__T_">willTransitionToTraitCollection(_:withTransitionCoordinator:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>In order to adapt the layout (show and hide the sidebar for example)
+to different trait collections we catch this method.</p>
+
+<div class="aside aside-warning">
+          <p class="aside-title">Warning</p>
+          You are not supposed to call this method directly.
+
+        </div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">override</span> <span class="kd">public</span> <span class="kd">func</span> <span class="nf">willTransitionToTraitCollection</span><span class="p">(</span><span class="nv">newCollection</span><span class="p">:</span> <span class="kt">UITraitCollection</span><span class="p">,</span> <span class="n">withTransitionCoordinator</span> <span class="nv">coordinator</span><span class="p">:</span> <span class="kt">UIViewControllerTransitionCoordinator</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/macteo/sabbar/tree/master/Sources/SabBar.swift#L398-L405">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2016 <a class="link" href="http://macteo.it" target="_blank" rel="external">MacTeo</a>. All rights reserved. (Last updated: 2016-01-22)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.4.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
