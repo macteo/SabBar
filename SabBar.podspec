@@ -2,16 +2,20 @@
 
 Pod::Spec.new do |s|
   s.name         = "SabBar"
-  s.version      = "0.1.0"
-  s.summary      = "Drop-in UITabBarController subclass that support lateral tabs based on size classes."
+  s.version      = "0.9.0"
+  s.summary      = "Drop-in UITabBarController subclass that shows a sidebar with tabs based on trait collections."
 
-  # This description is used to generate tags and improve search results.
-  #   * Think: What does it do? Why did you write it? What is the focus?
-  #   * Try to keep it short, snappy and to the point.
-  #   * Write the description between the DESC delimiters below.
-  #   * Finally, don't worry about the indent, CocoaPods strips it!
   s.description  = <<-DESC
-    Drop-in `UITabBarController` subclass that support lateral tabs based on size classes.
+  `SabBarController` is a subclass of `UITabBarController` that adds the option
+  to show a sidebar with tabs instead of the classic `UITabBar` based on trait
+  collections.
+
+  ![iPhone-landscape](https://raw.githubusercontent.com/macteo/SabBar/master/Assets/Readme/iPhone-landscape.png)
+
+  In order to use it, just instantiate it instead of the standard
+  `UITabBarController` programmatically or within Storyboards.
+
+  ![custom-class](https://raw.githubusercontent.com/macteo/SabBar/master/Assets/Readme/custom-class.jpg)
                    DESC
 
   s.homepage           = "https://github.com/macteo/SabBar"

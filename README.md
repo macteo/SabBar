@@ -1,48 +1,71 @@
 # SabBar
 
-Drop-in `UITabBarController` subclass that support lateral tabs based on size classes.
+Drop-in `UITabBarController` subclass that shows a sidebar with tabs based on trait collections.
 
 [![License MIT](https://img.shields.io/cocoapods/l/SabBar.svg)](https://raw.githubusercontent.com/macteo/SabBar/master/LICENSE) [![Version](https://img.shields.io/cocoapods/v/SabBar.svg)](https://cocoapods.org/?q=SabBar) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![travis-ci](https://travis-ci.org/macteo/SabBar.svg?branch=master)](https://travis-ci.org/macteo/SabBar)
-[![codecov.io](https://codecov.io/github/macteo/SabBar/coverage.svg?branch=master)](https://codecov.io/github/macteo/SabBar?branch=master)
+[![codecov.io](https://codecov.io/github/macteo/SabBar/coverage.svg?branch=master)](https://codecov.io/github/macteo/SabBar?branch=master) ![Swift 2](https://img.shields.io/badge/language-Swift%202.1-EB7943.svg) ![iOS 8+](https://img.shields.io/badge/iOS-8+-EB7943.svg)
+
+![split-view](https://raw.githubusercontent.com/macteo/SabBar/master/Assets/Readme/split-view.gif)
 
 ## Description
 
+**SabBar** aims to let you easily choose to show a sidebar with the same functionality of a `UITabBar` inside of your application, based on trait collections. To do so we've created a `UITabBarController` subclass called `SabBarController` that does most of the work. 
+We've also added few options to customize the appearance of those sidebar (width, tab height, top navigation bar, header view, ecc).
+
+ ![iPhone-landscape](https://raw.githubusercontent.com/macteo/SabBar/master/Assets/Readme/iPhone-landscape.png)
+
 ## Features
 
-- [x] Fix iPhone 6 Landscape navigation bar height.
-- [x] Standalone project.
-- [ ] Readme.
-- [ ] Medium Article.
-- [ ] Screenshots.
-- [ ] Documentation.
-- [x] CocoaPods.
-- [x] Carthage.
-- [x] Swift package manager.
+- [x] Ready to use, just swap a class.
+- [x] iPad and iPhone compatible.
+- [x] Single drop-in file.
+- [x] Customize sidebar appearance based on trait collections.
+- [x] No dependancies.
 - [x] Tests.
-- [x] Single drop-in class.
-- [x] Accessibility.
-- [x] Bar background tint.
-- [x] Blending layer (table view).
-- [x] Remove xib.
-- [x] Refactor code.
-- [x] License.
-- [x] Changelog.
-- [x] Add header button.
-- [x] Control on which size classes show which bar.
+- [x] Supports accessibility.
+- [x] Optional header view.
+- [x] Work well with and without navigation bars.
+- [x] Automatically grabs customizations from the `UITabBar`.
+- [x] Full documentation.
 - [ ] Support top, bottom and centered sidebar cells.
-- [x] Support different selected image.
-- [ ] Continuous integration with travis.
-- [ ] Code Coverage.
-- [ ] Push on github.
-- [x] Design icon.
-- [ ] Tab Bar images.
-- [x] User icon for the header.
-- [ ] Record Gif.
+- [ ] Support sidebar translucency.
 
 ## Requirements
 
 - iOS 8.0+
 - Xcode 7.1+
+
+## Documentation
+
+[Online documentation](http://cocoadocs.org/docsets/SabBar) is available curtesy of CocoaDocs. You can also navigate it offline downloading the source code and looking inside the *docs* folder.
+
+## Usage
+
+Import *SabBar* module into your Swift class
+
+```swift
+import SabBar
+```
+
+or if you are writing in Objective-C
+
+```objc
+#import <SabBar/SabBar-Swift.h>
+```
+
+> Keep in mind the you have to let the project generate the Bridging Header otherwise the integration may fail.
+
+Just replace any `UITabBarController` instance with a `SabBarController` one directly on Storyboards or programmatically.
+
+![custom-class](https://raw.githubusercontent.com/macteo/SabBar/master/Assets/Readme/custom-class.jpg)
+
+🎉
+
+### Sample project
+
+In the *Sample* folder you can find a sample project with few lines of code in the `AppDelegate` class for a jumpstart.
+
+> Sample code is written in Swift but Objective-C should be supported too, if you find an incompatibility please open an issue.
 
 ## Installation
 
@@ -56,7 +79,7 @@ $ gem install cocoapods
 
 > CocoaPods 0.39.0+ is required to build Marklight.
 
-To integrate SabBar into your Xcode project using CocoaPods, specify it in your `Podfile`:
+To integrate **SabBar** into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
 ```ruby
 source 'https://github.com/CocoaPods/Specs.git'
@@ -94,19 +117,15 @@ Run `carthage update --platform iOS` to build the framework and drag the built `
 
 ### Manually as a Framework
 
-Add the *SabBar* Xcode project to your own. Then add the `SabBar` framework as desired to the embedded binaries of your app's target.
+Add the *SabBar* Xcode project to your own. Then add the `SabBar` framework to the embedded binaries of your app's target.
 
 ### Manually as source file
 
 Just drag & drop the *SabBar.swift* source file from the *Sources* folder in your Xcode project.
 
-## Usage
+## Issues and bugs
 
-In this repository you can find a sample project with few lines of code in the `ViewController` class for a jumpstart.
-
-*Sample code is written in Swift but Objective-C should be supported too, if you find an incompatibility please open an issue.*
-
-### Integration
+Feel free to open an [issue](https://github.com/macteo/SabBar/issues) reporting a problem or requesting a new feature.
 
 ## Acknowledgements
 

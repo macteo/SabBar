@@ -35,7 +35,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SabBarControllerDelegate 
             
             sabBarController.hasNavigation = true
             
-            let size : CGFloat = 30.0
+            sabBarController.separateHeader = true
+            
+            let size : CGFloat = 40.0
             let userView = UIImageView(frame: CGRect(x: 0, y: 0, width: size, height: size))
             userView.backgroundColor = UIColor.clearColor()
             userView.clipsToBounds = true
@@ -43,16 +45,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SabBarControllerDelegate 
             let image = UIImage(named: "SabBar")
             userView.image = image
             
-            userView.layer.cornerRadius = size / 2.0
+            userView.layer.cornerRadius = 8
             sabBarController.headerView = userView
         }
         
         return true
     }
     
-    func shouldShowSabBar(controller: SabBarController, traitCollection: UITraitCollection) -> Bool {
+    func shouldShowSidebar(controller: SabBarController, traitCollection: UITraitCollection) -> Bool {
         if traitCollection.horizontalSizeClass == .Regular || traitCollection.verticalSizeClass == .Compact {
-            return false
+            return true
         } else {
             return false
         }

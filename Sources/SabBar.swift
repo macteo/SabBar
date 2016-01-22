@@ -22,10 +22,49 @@
 
 import UIKit
 
+/**
+ Implement this protocol to control sidebar appearance based on the current trait
+ collection.
+*/
+
 @objc public protocol SabBarControllerDelegate {
-    func shouldShowSabBar(controller: SabBarController, traitCollection: UITraitCollection) -> Bool
+
+    /**
+     Whenever the `traitCollection` is changed the `SabBarController` asks its 
+     `sabBarDelegate` (if set) to specify the visibility of the sidebar. If the 
+     sidebar is visible, the tabBar will be hidden and vice versa.
+     
+     Default values are:
+     
+     ```swift
+     if traitCollection.horizontalSizeClass == .Regular ||
+        traitCollection.verticalSizeClass == .Compact {
+        return true
+     } else {
+        return false
+     }
+     ```
+     
+     - parameter controller: the `SabBarController` that is performing the
+     request.
+     - parameter traitCollection: the current `UITraitCollection`.
+     - returns: if the sidebar should be visible or not.
+     */
+    func shouldShowSidebar(controller: SabBarController, traitCollection: UITraitCollection) -> Bool
 }
 
+/**
+ `SabBarController` is a subclass of `UITabBarController` that adds the option
+ to show a sidebar with tabs instead of the classic `UITabBar` based on trait 
+ collections.
+ 
+ ![iPhone-landscape](https://raw.githubusercontent.com/macteo/SabBar/master/Assets/Readme/iPhone-landscape.png)
+ 
+ In order to use it, just instantiate it instead of the standard 
+ `UITabBarController` programmatically or within Storyboards.
+ 
+ ![custom-class](https://raw.githubusercontent.com/macteo/SabBar/master/Assets/Readme/custom-class.jpg)
+ */
 public class SabBarController: UITabBarController, UITableViewDataSource, UITableViewDelegate {
 
 // MARK: Constants and properties
@@ -51,29 +90,72 @@ public class SabBarController: UITabBarController, UITableViewDataSource, UITabl
     private var navigationBarWidthConstraint : NSLayoutConstraint?
     private var navigationBarHeightConstraint : NSLayoutConstraint?
     private var headerViewCenterConstraint : NSLayoutConstraint?
-
-    @IBOutlet public var sabBarDelegate : SabBarControllerDelegate?
     
 // MARK: User customizable properties
     
+    /**
+     Specify the sidebar width, default 80 points.
+     
+     ![sidebar-width](https://raw.githubusercontent.com/macteo/SabBar/master/Assets/Readme/sidebar-width.png)
+     */
     @IBInspectable public var sidebarWidth : CGFloat = 80.0
-    @IBInspectable public var cellHeight : CGFloat = 60.0
+
+    /**
+     Specify the height of each tab inside the sidebar, dafault 60 points.
+     
+     ![sidebar-width](https://raw.githubusercontent.com/macteo/SabBar/master/Assets/Readme/tab-height.png)
+     */
+    @IBInspectable public var tabHeight : CGFloat = 60.0
+    
+    /**
+     By default the sidebar starts directly from the top of the view, use this
+     property to ad a `UINavigationBar` above it.
+     
+     ![sidebar-width](https://raw.githubusercontent.com/macteo/SabBar/master/Assets/Readme/has-navigation.png)
+     */
     @IBInspectable public var hasNavigation : Bool = false
+
+    /**
+     If you has enabled the `hasNavigation` property, you may want to add a
+     hairline border right beside it to function as separator.
+     
+     ![sidebar-width](https://raw.githubusercontent.com/macteo/SabBar/master/Assets/Readme/separate-header.png)
+     */
     @IBInspectable public var separateHeader : Bool = false
     
-    @IBInspectable public
-    var backgroundColor : UIColor = UIColor.whiteColor() {
+    /**
+     Access the navigation bar, if enabled, to set its tint and behavior.
+     */
+    public let navigationBar = UINavigationBar()
+    
+    /**
+     Specify a background color behind the sidebar, this will affect its color 
+     if translucent. Default color is white.
+     */
+    @IBInspectable public var backgroundColor : UIColor = UIColor.whiteColor() {
         didSet {
             self.view.backgroundColor = backgroundColor
         }
     }
     
+    /**
+     Choose a tint for the tabBar and the sidebar.
+     */
     @IBInspectable public var imageTint : UIColor? {
         didSet {
             tabBar.tintColor = imageTint
         }
     }
     
+    /**
+     If you enabled the `hasNavigation` property, you can add a `UIView`, or one
+     of its subclasses like `UIButton`. This will be automatically centered 
+     above the sidebar. Keep in mind that If you exceed 32 points for its height
+     it will overlap the navigation bar on devices smaller that the iPhone 6+ 
+     in landscape.
+     
+     ![sidebar-width](https://raw.githubusercontent.com/macteo/SabBar/master/Assets/Readme/header-view.png)
+     */
     @IBOutlet public var headerView : UIView? {
         willSet {
             if let headerView = headerView {
@@ -93,10 +175,41 @@ public class SabBarController: UITabBarController, UITableViewDataSource, UITabl
         }
     }
     
-    public let navigationBar = UINavigationBar()
+    /**
+     You can register a class that conforms to the `SabBarControllerDelegate`
+     protocol in order to manage if you want to show or hide the sidebar, based
+     on trait collections.
+     */
+    @IBOutlet public var sabBarDelegate : SabBarControllerDelegate?
+
+// MARK: Sidebar visibility
+    
+    /**
+     Toggle the Sidebar visibility programmatically.
+    
+     Sidebar and tabBar are mutually exclusive.
+     
+     - parameter visible: if the sidebar should be visibile or not.
+     */
+    public func toggleSidebar(visible visible: Bool) {
+        if visible == false {
+            self.sidebarWidthConstraint?.constant = 0
+            self.navigationBar.hidden = true
+            self.tabBar.hidden = false
+        } else {
+            self.sidebarWidthConstraint?.constant = self.sidebarWidth
+            self.tabBar.hidden = true
+            self.navigationBar.hidden = false
+        }
+    }
 
 // MARK: View lifecycle
     
+    /**
+     Building sidebar view and setting so many layout constraints.
+     
+     - warning: You are not supposed to call this method directly.
+     */
     override public func viewDidLoad() {
         super.viewDidLoad()
         view.accessibilityIdentifier = "View"
@@ -104,12 +217,22 @@ public class SabBarController: UITabBarController, UITableViewDataSource, UITabl
         buildSidebarView()
     }
     
+    /**
+     We ensure to show or hide the sidebar and the tabBar based on the current trait collection.
+     
+     - warning: You are not supposed to call this method directly.
+     */
     override public func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
         showAndHideSidebar(traitCollection)
     }
     
+    /**
+     Just selecting the correct sidebar tab.
+     
+     - warning: You are not supposed to call this method directly.
+     */
     override public func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -121,10 +244,17 @@ public class SabBarController: UITabBarController, UITableViewDataSource, UITabl
     
 // MARK: Private shortcuts methods
     
+    /**
+     Just a shortcut to get the status bar height in realtime, based on its
+     visibility status.
+     */
     private var statusHeight : CGFloat {
         return UIApplication.sharedApplication().statusBarFrame.height
     }
     
+    /**
+     Detect which is the index of the selected `UITabBar` item.
+     */
     func selectedIndex(item: UITabBarItem?) -> Int {
         var index = 0
         for _item in tabBar.items! {
@@ -136,37 +266,92 @@ public class SabBarController: UITabBarController, UITableViewDataSource, UITabl
         return 0
     }
     
+    /**
+     We need the view that contains the child controller's views in order to set
+     its leading constraint to create space for the sidebar.
+     
+     - warning: On iOS 8 and 9 it is the first subview of the tab bar controller
+     */
     private var contentView : UIView {
         return self.view.subviews[0]
     }
 
-// MARK: Sidebar table view
+// MARK: Sidebar table view delegate
     
+    /**
+     Sidebar is a table view and in order to populate it with tabs the 
+     `SabBarController` is its delegate.
+    
+     - warning: You are not supposed to call this method directly.
+    */
     public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return cellHeight
+        return tabHeight
     }
     
-    public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
- 
-    public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let items = tabBar.items {
-            return items.count
-        }
-        return 0
-    }
-
+    /**
+     Sidebar is a table view and in order to populate it with tabs the
+     `SabBarController` is its delegate.
+     
+     - warning: You are not supposed to call this method directly.
+     */
     public func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return statusHeight
     }
     
+    /**
+     Sidebar is a table view and in order to populate it with tabs the
+     `SabBarController` is its delegate.
+     
+     - warning: You are not supposed to call this method directly.
+     */
     public func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = UIView(frame: CGRectMake(0, 0, sidebarWidth, statusHeight))
         header.backgroundColor = UIColor.clearColor()
         return header
     }
     
+    /**
+     Sidebar is a table view and in order to populate it with tabs the
+     `SabBarController` is its delegate.
+     
+     - warning: You are not supposed to call this method directly.
+     */
+    public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.selectedIndex = indexPath.row
+    }
+
+// MARK: Sidebar table view data source
+    
+    /**
+     Sidebar is a table view and in order to populate it with tabs the
+     `SabBarController` is its data source.
+     
+     - warning: You are not supposed to call this method directly.
+     */
+    public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+ 
+    /**
+     Sidebar is a table view and in order to populate it with tabs the
+     `SabBarController` is its data source.
+     
+     - warning: You are not supposed to call this method directly.
+     */
+    public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let items = tabBar.items {
+            return items.count
+        }
+        return 0
+    }
+    
+    /**
+     Sidebar is a table view and in order to populate it with tabs the
+     `SabBarController` is its data source.
+     
+     - warning: You are not supposed to call this method directly, but it can 
+     be freely overriden in order to customize the cell appearance.
+     */
     public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("tabCellIdentifier", forIndexPath: indexPath) as! SabBarCell
 
@@ -190,18 +375,26 @@ public class SabBarController: UITabBarController, UITableViewDataSource, UITabl
         return cell
     }
     
-    public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.selectedIndex = indexPath.row
-    }
-    
 // MARK: Tab bar delegate
     
+    /**
+    We register ourself as `UITabBarDelegate` in order to detect tab changes and
+    update also the selected sidebar tab.
+    
+    - warning: You are not supposed to call this method directly.
+    */
     override public func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
         tabTable.selectRowAtIndexPath(NSIndexPath(forRow: selectedIndex(item), inSection: 0), animated: true, scrollPosition: .Top)
     }
     
-// MARK: Sidebar visibility
+// MARK: Adapt layout to trait collections
+
+    /**
+     In order to adapt the layout (show and hide the sidebar for example)
+     to different trait collections we catch this method.
     
+     - warning: You are not supposed to call this method directly.
+    */
     override public func willTransitionToTraitCollection(newCollection: UITraitCollection, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         super.willTransitionToTraitCollection(newCollection, withTransitionCoordinator: coordinator)
         coordinator.animateAlongsideTransition({ [unowned self] _ in
@@ -211,9 +404,13 @@ public class SabBarController: UITabBarController, UITableViewDataSource, UITabl
         }
     }
 
-    func showAndHideSidebar(traitCollection : UITraitCollection) {
+    /**
+     Method to show and hide the sidebar, based on the current or a new 
+     trait collection.
+     */
+    private func showAndHideSidebar(traitCollection : UITraitCollection) {
         if let sabBarDelegate = sabBarDelegate {
-            let visible = sabBarDelegate.shouldShowSabBar(self, traitCollection: traitCollection)
+            let visible = sabBarDelegate.shouldShowSidebar(self, traitCollection: traitCollection)
             toggleSidebar(visible: visible)
         } else {
             if traitCollection.horizontalSizeClass == .Regular || traitCollection.verticalSizeClass == .Compact {
@@ -232,20 +429,12 @@ public class SabBarController: UITabBarController, UITableViewDataSource, UITabl
         }
     }
     
-    public func toggleSidebar(visible visible: Bool) {
-        if visible == false {
-            self.sidebarWidthConstraint?.constant = 0
-            self.navigationBar.hidden = true
-            self.tabBar.hidden = false
-        } else {
-            self.sidebarWidthConstraint?.constant = self.sidebarWidth
-            self.tabBar.hidden = true
-            self.navigationBar.hidden = false
-        }
-    }
-    
 // MARK: Constraints and sidebar creation
     
+    /**
+     Setting up constraints in order to keep the header view as centered as 
+     possible in relation to the navigation bar and the sidebar.
+    */
     private func centerHeaderView(navigationHeight : CGFloat) {
         guard let headerView = headerView else { return }
         
@@ -262,11 +451,7 @@ public class SabBarController: UITabBarController, UITableViewDataSource, UITabl
         
         headerView.addConstraint(NSLayoutConstraint(item: headerView, attribute: .Width, relatedBy: .Equal, toItem: headerView, attribute: .Height, multiplier: 1, constant: 0))
         headerView.addConstraint(NSLayoutConstraint(item: headerView, attribute: .Height, relatedBy: .LessThanOrEqual, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: headerView.frame.size.height))
-        // navigationBar.addConstraint(NSLayoutConstraint(item: headerView, attribute: .Height, relatedBy: .LessThanOrEqual, toItem: navigationBar, attribute: .Height, multiplier: 1, constant: -4))
-        
-        // let bottomMargin = (navigationHeight - headerView.frame.size.height) / 2.0
-        
-        // navigationBar.addConstraint(NSLayoutConstraint(item: headerView, attribute: .Bottom, relatedBy: .GreaterThanOrEqual, toItem: navigationBar, attribute: .Bottom, multiplier: 1, constant: -bottomMargin))
+        navigationBar.addConstraint(NSLayoutConstraint(item: headerView, attribute: .Height, relatedBy: .LessThanOrEqual, toItem: navigationBar, attribute: .Height, multiplier: 1, constant: -4))
     }
 
     internal func buildSidebarView() {
