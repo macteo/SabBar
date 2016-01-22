@@ -65,7 +65,7 @@ Just replace any `UITabBarController` instance with a `SabBarController` one dir
 
 In the *Sample* folder you can find a sample project with few lines of code in the `AppDelegate` class for a jumpstart.
 
-> Sample code is written in Swift but Objective-C should be supported too, if you find an incompatibility please open an issue.
+> Unfortunately you cannot create a subclass written on Objective-C of a Swift class, so you *can* use **SabBar** in an Objective-C project, but if you need to subclass the `SubBarController` you are forced to do it in Swift.
 
 ## Installation
 
