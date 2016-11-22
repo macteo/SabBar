@@ -1,5 +1,5 @@
 PODS:
-  - SabBar (0.1.0)
+  - SabBar (1.0.0)
 
 DEPENDENCIES:
   - SabBar (from `..`)
@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: ".."
 
 SPEC CHECKSUMS:
-  SabBar: ecc994ec189b4f3d8b076f7648fd7f1a02e777c7
+  SabBar: 60c29e128a9f3934fdbfef448b753590add82ade
 
 PODFILE CHECKSUM: 8c8435284712a7edac6722c8ab7170f74daab8ac
 
-COCOAPODS: 1.0.0.beta.2
+COCOAPODS: 1.1.1

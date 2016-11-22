@@ -33,7 +33,7 @@ We've also added few options to customize the appearance of those sidebar (width
 ## Requirements
 
 - iOS 8.0+
-- Xcode 7.1+
+- Xcode 8.0+
 
 ## Documentation
 
