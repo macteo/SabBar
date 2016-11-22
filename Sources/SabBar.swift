@@ -50,7 +50,7 @@ import UIKit
      - parameter traitCollection: the current `UITraitCollection`.
      - returns: if the sidebar should be visible or not.
      */
-    func shouldShowSidebar(controller: SabBarController, traitCollection: UITraitCollection) -> Bool
+    func shouldShowSidebar(_ controller: SabBarController, traitCollection: UITraitCollection) -> Bool
 }
 
 /**
@@ -65,31 +65,31 @@ import UIKit
  
  ![custom-class](https://raw.githubusercontent.com/macteo/SabBar/master/Assets/Readme/custom-class.jpg)
  */
-public class SabBarController: UITabBarController, UITableViewDataSource, UITableViewDelegate {
+open class SabBarController: UITabBarController, UITableViewDataSource, UITableViewDelegate {
 
 // MARK: Constants and properties
     
     internal var sidebar = UIView()
     internal let toolbar = UIToolbar()
-    internal let tabTable = UITableView(frame: CGRectZero, style: .Plain)
+    internal let tabTable = UITableView(frame: CGRect.zero, style: .plain)
 
-    private var navigationBarHeight : CGFloat {
+    fileprivate var navigationBarHeight : CGFloat {
         return navigationBarHeight(self.traitCollection)
     }
     
-    private func navigationBarHeight(traitCollection : UITraitCollection) -> CGFloat {
-        if traitCollection.verticalSizeClass == .Compact && traitCollection.horizontalSizeClass == .Compact {
+    fileprivate func navigationBarHeight(_ traitCollection : UITraitCollection) -> CGFloat {
+        if traitCollection.verticalSizeClass == .compact && traitCollection.horizontalSizeClass == .compact {
             return 32 // iPhone 6 and below in landscape
         } else {
             return 44 // iPhone 6 Plus and above
         }
     }
     
-    private let statusBarHeight : CGFloat = 20
-    private var sidebarWidthConstraint : NSLayoutConstraint?
-    private var navigationBarWidthConstraint : NSLayoutConstraint?
-    private var navigationBarHeightConstraint : NSLayoutConstraint?
-    private var headerViewCenterConstraint : NSLayoutConstraint?
+    fileprivate let statusBarHeight : CGFloat = 20
+    fileprivate var sidebarWidthConstraint : NSLayoutConstraint?
+    fileprivate var navigationBarWidthConstraint : NSLayoutConstraint?
+    fileprivate var navigationBarHeightConstraint : NSLayoutConstraint?
+    fileprivate var headerViewCenterConstraint : NSLayoutConstraint?
     
 // MARK: User customizable properties
     
@@ -98,14 +98,14 @@ public class SabBarController: UITabBarController, UITableViewDataSource, UITabl
      
      ![sidebar-width](https://raw.githubusercontent.com/macteo/SabBar/master/Assets/Readme/sidebar-width.png)
      */
-    @IBInspectable public var sidebarWidth : CGFloat = 80.0
+    @IBInspectable open var sidebarWidth : CGFloat = 80.0
 
     /**
      Specify the height of each tab inside the sidebar, dafault 60 points.
      
      ![sidebar-width](https://raw.githubusercontent.com/macteo/SabBar/master/Assets/Readme/tab-height.png)
      */
-    @IBInspectable public var tabHeight : CGFloat = 60.0
+    @IBInspectable open var tabHeight : CGFloat = 60.0
     
     /**
      By default the sidebar starts directly from the top of the view, use this
@@ -113,7 +113,7 @@ public class SabBarController: UITabBarController, UITableViewDataSource, UITabl
      
      ![sidebar-width](https://raw.githubusercontent.com/macteo/SabBar/master/Assets/Readme/has-navigation.png)
      */
-    @IBInspectable public var hasNavigation : Bool = false
+    @IBInspectable open var hasNavigation : Bool = false
 
     /**
      If you has enabled the `hasNavigation` property, you may want to add a
@@ -121,18 +121,18 @@ public class SabBarController: UITabBarController, UITableViewDataSource, UITabl
      
      ![sidebar-width](https://raw.githubusercontent.com/macteo/SabBar/master/Assets/Readme/separate-header.png)
      */
-    @IBInspectable public var separateHeader : Bool = false
+    @IBInspectable open var separateHeader : Bool = false
     
     /**
      Access the navigation bar, if enabled, to set its tint and behavior.
      */
-    public let navigationBar = UINavigationBar()
+    open let navigationBar = UINavigationBar()
     
     /**
      Specify a background color behind the sidebar, this will affect its color 
      if translucent. Default color is white.
      */
-    @IBInspectable public var backgroundColor : UIColor = UIColor.whiteColor() {
+    @IBInspectable open var backgroundColor : UIColor = UIColor.white {
         didSet {
             self.view.backgroundColor = backgroundColor
         }
@@ -141,7 +141,7 @@ public class SabBarController: UITabBarController, UITableViewDataSource, UITabl
     /**
      Choose a tint for the tabBar and the sidebar.
      */
-    @IBInspectable public var imageTint : UIColor? {
+    @IBInspectable open var imageTint : UIColor? {
         didSet {
             tabBar.tintColor = imageTint
         }
@@ -156,7 +156,7 @@ public class SabBarController: UITabBarController, UITableViewDataSource, UITabl
      
      ![sidebar-width](https://raw.githubusercontent.com/macteo/SabBar/master/Assets/Readme/header-view.png)
      */
-    @IBOutlet public var headerView : UIView? {
+    @IBOutlet open var headerView : UIView? {
         willSet {
             if let headerView = headerView {
                 headerView.removeFromSuperview()
@@ -180,7 +180,7 @@ public class SabBarController: UITabBarController, UITableViewDataSource, UITabl
      protocol in order to manage if you want to show or hide the sidebar, based
      on trait collections.
      */
-    @IBOutlet public var sabBarDelegate : SabBarControllerDelegate?
+    @IBOutlet open var sabBarDelegate : SabBarControllerDelegate?
 
 // MARK: Sidebar visibility
     
@@ -191,15 +191,15 @@ public class SabBarController: UITabBarController, UITableViewDataSource, UITabl
      
      - parameter visible: if the sidebar should be visibile or not.
      */
-    public func toggleSidebar(visible visible: Bool) {
+    open func toggleSidebar(visible: Bool) {
         if visible == false {
             self.sidebarWidthConstraint?.constant = 0
-            self.navigationBar.hidden = true
-            self.tabBar.hidden = false
+            self.navigationBar.isHidden = true
+            self.tabBar.isHidden = false
         } else {
             self.sidebarWidthConstraint?.constant = self.sidebarWidth
-            self.tabBar.hidden = true
-            self.navigationBar.hidden = false
+            self.tabBar.isHidden = true
+            self.navigationBar.isHidden = false
         }
     }
 
@@ -210,7 +210,7 @@ public class SabBarController: UITabBarController, UITableViewDataSource, UITabl
      
      - warning: You are not supposed to call this method directly.
      */
-    override public func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         view.accessibilityIdentifier = "View"
         
@@ -222,7 +222,7 @@ public class SabBarController: UITabBarController, UITableViewDataSource, UITabl
      
      - warning: You are not supposed to call this method directly.
      */
-    override public func viewWillAppear(animated: Bool) {
+    override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         showAndHideSidebar(traitCollection)
@@ -233,11 +233,11 @@ public class SabBarController: UITabBarController, UITableViewDataSource, UITabl
      
      - warning: You are not supposed to call this method directly.
      */
-    override public func viewDidAppear(animated: Bool) {
+    override open func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         guard let _ = tabTable.indexPathForSelectedRow else {
-            tabTable.selectRowAtIndexPath(NSIndexPath(forRow: selectedIndex, inSection: 0), animated: true, scrollPosition: .None)
+            tabTable.selectRow(at: IndexPath(row: selectedIndex, section: 0), animated: true, scrollPosition: .none)
             return
         }
     }
@@ -248,14 +248,14 @@ public class SabBarController: UITabBarController, UITableViewDataSource, UITabl
      Just a shortcut to get the status bar height in realtime, based on its
      visibility status.
      */
-    private var statusHeight : CGFloat {
-        return UIApplication.sharedApplication().statusBarFrame.height
+    fileprivate var statusHeight : CGFloat {
+        return UIApplication.shared.statusBarFrame.height
     }
     
     /**
      Detect which is the index of the selected `UITabBar` item.
      */
-    func selectedIndex(item: UITabBarItem?) -> Int {
+    func selectedIndex(_ item: UITabBarItem?) -> Int {
         var index = 0
         for _item in tabBar.items! {
             if _item == item {
@@ -272,7 +272,7 @@ public class SabBarController: UITabBarController, UITableViewDataSource, UITabl
      
      - warning: On iOS 8 and 9 it is the first subview of the tab bar controller
      */
-    private var contentView : UIView {
+    fileprivate var contentView : UIView {
         return self.view.subviews[0]
     }
 
@@ -284,7 +284,7 @@ public class SabBarController: UITabBarController, UITableViewDataSource, UITabl
     
      - warning: You are not supposed to call this method directly.
     */
-    public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    open func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return tabHeight
     }
     
@@ -294,7 +294,7 @@ public class SabBarController: UITabBarController, UITableViewDataSource, UITabl
      
      - warning: You are not supposed to call this method directly.
      */
-    public func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    open func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return statusHeight
     }
     
@@ -304,9 +304,9 @@ public class SabBarController: UITabBarController, UITableViewDataSource, UITabl
      
      - warning: You are not supposed to call this method directly.
      */
-    public func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = UIView(frame: CGRectMake(0, 0, sidebarWidth, statusHeight))
-        header.backgroundColor = UIColor.clearColor()
+    open func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = UIView(frame: CGRect(x: 0, y: 0, width: sidebarWidth, height: statusHeight))
+        header.backgroundColor = UIColor.clear
         return header
     }
     
@@ -316,7 +316,7 @@ public class SabBarController: UITabBarController, UITableViewDataSource, UITabl
      
      - warning: You are not supposed to call this method directly.
      */
-    public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.selectedIndex = indexPath.row
     }
 
@@ -328,7 +328,7 @@ public class SabBarController: UITabBarController, UITableViewDataSource, UITabl
      
      - warning: You are not supposed to call this method directly.
      */
-    public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    open func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
  
@@ -338,7 +338,7 @@ public class SabBarController: UITabBarController, UITableViewDataSource, UITabl
      
      - warning: You are not supposed to call this method directly.
      */
-    public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let items = tabBar.items {
             return items.count
         }
@@ -352,16 +352,16 @@ public class SabBarController: UITabBarController, UITableViewDataSource, UITabl
      - warning: You are not supposed to call this method directly, but it can 
      be freely overriden in order to customize the cell appearance.
      */
-    public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("tabCellIdentifier", forIndexPath: indexPath) as! SabBarCell
+    open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "tabCellIdentifier", for: indexPath) as! SabBarCell
 
         cell.tintColor = tabBar.tintColor
         
         if let item = tabBar.items?[indexPath.row] {
             cell.tabLabel.text = item.title
 
-            cell.tabDeselectedImage = item.image?.imageWithRenderingMode(.AlwaysTemplate)
-            cell.tabSelectedImage = item.selectedImage?.imageWithRenderingMode(.AlwaysTemplate)
+            cell.tabDeselectedImage = item.image?.withRenderingMode(.alwaysTemplate)
+            cell.tabSelectedImage = item.selectedImage?.withRenderingMode(.alwaysTemplate)
 
             if tabBar.selectedItem == item {
                 cell.tabImage.tintColor = cell.tintColor
@@ -383,8 +383,8 @@ public class SabBarController: UITabBarController, UITableViewDataSource, UITabl
     
     - warning: You are not supposed to call this method directly.
     */
-    override public func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
-        tabTable.selectRowAtIndexPath(NSIndexPath(forRow: selectedIndex(item), inSection: 0), animated: true, scrollPosition: .Top)
+    override open func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        tabTable.selectRow(at: IndexPath(row: selectedIndex(item), section: 0), animated: true, scrollPosition: .top)
     }
     
 // MARK: Adapt layout to trait collections
@@ -395,9 +395,9 @@ public class SabBarController: UITabBarController, UITableViewDataSource, UITabl
     
      - warning: You are not supposed to call this method directly.
     */
-    override public func willTransitionToTraitCollection(newCollection: UITraitCollection, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        super.willTransitionToTraitCollection(newCollection, withTransitionCoordinator: coordinator)
-        coordinator.animateAlongsideTransition({ [unowned self] _ in
+    override open func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.willTransition(to: newCollection, with: coordinator)
+        coordinator.animate(alongsideTransition: { [unowned self] _ in
             self.showAndHideSidebar(newCollection)
         }) { _ in
 
@@ -408,19 +408,19 @@ public class SabBarController: UITabBarController, UITableViewDataSource, UITabl
      Method to show and hide the sidebar, based on the current or a new 
      trait collection.
      */
-    private func showAndHideSidebar(traitCollection : UITraitCollection) {
+    fileprivate func showAndHideSidebar(_ traitCollection : UITraitCollection) {
         if let sabBarDelegate = sabBarDelegate {
             let visible = sabBarDelegate.shouldShowSidebar(self, traitCollection: traitCollection)
             toggleSidebar(visible: visible)
         } else {
-            if traitCollection.horizontalSizeClass == .Regular || traitCollection.verticalSizeClass == .Compact {
+            if traitCollection.horizontalSizeClass == .regular || traitCollection.verticalSizeClass == .compact {
                 toggleSidebar(visible: true)
             } else {
                 toggleSidebar(visible: false)
             }
         }
         
-        if traitCollection.verticalSizeClass == .Compact {
+        if traitCollection.verticalSizeClass == .compact {
             self.navigationBarHeightConstraint?.constant = navigationBarHeight
             self.headerViewCenterConstraint?.constant = 0
         } else {
@@ -435,7 +435,7 @@ public class SabBarController: UITabBarController, UITableViewDataSource, UITabl
      Setting up constraints in order to keep the header view as centered as 
      possible in relation to the navigation bar and the sidebar.
     */
-    private func centerHeaderView(navigationHeight : CGFloat) {
+    fileprivate func centerHeaderView(_ navigationHeight : CGFloat) {
         guard let headerView = headerView else { return }
         
         navigationBar.removeConstraints(headerView.constraints)
@@ -445,13 +445,13 @@ public class SabBarController: UITabBarController, UITableViewDataSource, UITabl
         let originX = (sidebarWidth - headerView.frame.size.width) / 2.0
         headerView.frame = CGRect(x: originX, y: originY, width: headerView.frame.size.width, height: headerView.frame.size.height)
         
-        navigationBar.addConstraint(NSLayoutConstraint(item: headerView, attribute: .CenterX, relatedBy: .Equal, toItem: navigationBar, attribute: .CenterX, multiplier: 1, constant: 0))
-        headerViewCenterConstraint = NSLayoutConstraint(item: headerView, attribute: .CenterY, relatedBy: .Equal, toItem: navigationBar, attribute: .CenterY, multiplier: 1, constant: 0)
+        navigationBar.addConstraint(NSLayoutConstraint(item: headerView, attribute: .centerX, relatedBy: .equal, toItem: navigationBar, attribute: .centerX, multiplier: 1, constant: 0))
+        headerViewCenterConstraint = NSLayoutConstraint(item: headerView, attribute: .centerY, relatedBy: .equal, toItem: navigationBar, attribute: .centerY, multiplier: 1, constant: 0)
         navigationBar.addConstraint(headerViewCenterConstraint!)
         
-        headerView.addConstraint(NSLayoutConstraint(item: headerView, attribute: .Width, relatedBy: .Equal, toItem: headerView, attribute: .Height, multiplier: 1, constant: 0))
-        headerView.addConstraint(NSLayoutConstraint(item: headerView, attribute: .Height, relatedBy: .LessThanOrEqual, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: headerView.frame.size.height))
-        navigationBar.addConstraint(NSLayoutConstraint(item: headerView, attribute: .Height, relatedBy: .LessThanOrEqual, toItem: navigationBar, attribute: .Height, multiplier: 1, constant: -4))
+        headerView.addConstraint(NSLayoutConstraint(item: headerView, attribute: .width, relatedBy: .equal, toItem: headerView, attribute: .height, multiplier: 1, constant: 0))
+        headerView.addConstraint(NSLayoutConstraint(item: headerView, attribute: .height, relatedBy: .lessThanOrEqual, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: headerView.frame.size.height))
+        navigationBar.addConstraint(NSLayoutConstraint(item: headerView, attribute: .height, relatedBy: .lessThanOrEqual, toItem: navigationBar, attribute: .height, multiplier: 1, constant: -4))
     }
 
     internal func buildSidebarView() {
@@ -465,17 +465,17 @@ public class SabBarController: UITabBarController, UITableViewDataSource, UITabl
             navigationBar.accessibilityIdentifier = "navigationBar"
             view.addSubview(navigationBar)
             
-            view.addConstraint(NSLayoutConstraint(item: navigationBar, attribute: .Top, relatedBy: .Equal, toItem: view, attribute: .Top, multiplier: 1, constant: 0))
-            view.addConstraint(NSLayoutConstraint(item: navigationBar, attribute: .Leading, relatedBy: .Equal, toItem: view, attribute: .Leading, multiplier: 1, constant: 0))
-            navigationBarWidthConstraint = NSLayoutConstraint(item: navigationBar, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: sidebarWidth)
+            view.addConstraint(NSLayoutConstraint(item: navigationBar, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 0))
+            view.addConstraint(NSLayoutConstraint(item: navigationBar, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 0))
+            navigationBarWidthConstraint = NSLayoutConstraint(item: navigationBar, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: sidebarWidth)
             view.addConstraint(navigationBarWidthConstraint!)
             
-            navigationBarHeightConstraint = NSLayoutConstraint(item: navigationBar, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: navigationBarHeight + statusHeight)
+            navigationBarHeightConstraint = NSLayoutConstraint(item: navigationBar, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: navigationBarHeight + statusHeight)
             view.addConstraint(navigationBarHeightConstraint!)
             
-            sidebar.frame = CGRectMake(0, navigationBarHeight, sidebarWidth, view.bounds.height)
+            sidebar.frame = CGRect(x: 0, y: navigationBarHeight, width: sidebarWidth, height: view.bounds.height)
         } else {
-            sidebar.frame = CGRectMake(0, 0, sidebarWidth, view.bounds.height)
+            sidebar.frame = CGRect(x: 0, y: 0, width: sidebarWidth, height: view.bounds.height)
         }
         
         sidebar.accessibilityIdentifier = "Sidebar"
@@ -509,37 +509,37 @@ public class SabBarController: UITabBarController, UITableViewDataSource, UITabl
         sidebar.addSubview(toolbar)
         toolbar.translatesAutoresizingMaskIntoConstraints = false
         
-        sidebar.addConstraint(NSLayoutConstraint(item: toolbar, attribute: .Top, relatedBy: .Equal, toItem: sidebar, attribute: .Top, multiplier: 1, constant: 0))
-        sidebar.addConstraint(NSLayoutConstraint(item: toolbar, attribute: .Bottom, relatedBy: .Equal, toItem: sidebar, attribute: .Bottom, multiplier: 1, constant: 0))
-        sidebar.addConstraint(NSLayoutConstraint(item: toolbar, attribute: .Leading, relatedBy: .Equal, toItem: sidebar, attribute: .Leading, multiplier: 1, constant: 0))
-        sidebar.addConstraint(NSLayoutConstraint(item: toolbar, attribute: .Trailing, relatedBy: .Equal, toItem: sidebar, attribute: .Trailing, multiplier: 1, constant: 0))
+        sidebar.addConstraint(NSLayoutConstraint(item: toolbar, attribute: .top, relatedBy: .equal, toItem: sidebar, attribute: .top, multiplier: 1, constant: 0))
+        sidebar.addConstraint(NSLayoutConstraint(item: toolbar, attribute: .bottom, relatedBy: .equal, toItem: sidebar, attribute: .bottom, multiplier: 1, constant: 0))
+        sidebar.addConstraint(NSLayoutConstraint(item: toolbar, attribute: .leading, relatedBy: .equal, toItem: sidebar, attribute: .leading, multiplier: 1, constant: 0))
+        sidebar.addConstraint(NSLayoutConstraint(item: toolbar, attribute: .trailing, relatedBy: .equal, toItem: sidebar, attribute: .trailing, multiplier: 1, constant: 0))
         
         tabTable.frame = sidebar.bounds
         tabTable.delegate = self
         tabTable.dataSource = self
         
-        tabTable.scrollEnabled = false
+        tabTable.isScrollEnabled = false
         
-        tabTable.backgroundColor = UIColor.clearColor()
+        tabTable.backgroundColor = UIColor.clear
         
-        tabTable.registerClass(SabBarCell.self, forCellReuseIdentifier: "tabCellIdentifier")
-        tabTable.separatorColor = UIColor.clearColor()
+        tabTable.register(SabBarCell.self, forCellReuseIdentifier: "tabCellIdentifier")
+        tabTable.separatorColor = UIColor.clear
         
         tabTable.translatesAutoresizingMaskIntoConstraints = false
         tabTable.accessibilityIdentifier = "tabTable"
         
         sidebar.addSubview(tabTable)
         
-        sidebar.addConstraint(NSLayoutConstraint(item: tabTable, attribute: .Top, relatedBy: .Equal, toItem: sidebar, attribute: .Top, multiplier: 1, constant: 0))
-        sidebar.addConstraint(NSLayoutConstraint(item: tabTable, attribute: .Bottom, relatedBy: .Equal, toItem: sidebar, attribute: .Bottom, multiplier: 1, constant: 0))
-        sidebar.addConstraint(NSLayoutConstraint(item: tabTable, attribute: .Leading, relatedBy: .Equal, toItem: sidebar, attribute: .Leading, multiplier: 1, constant: 0))
-        sidebar.addConstraint(NSLayoutConstraint(item: tabTable, attribute: .Trailing, relatedBy: .Equal, toItem: sidebar, attribute: .Trailing, multiplier: 1, constant: 0))
+        sidebar.addConstraint(NSLayoutConstraint(item: tabTable, attribute: .top, relatedBy: .equal, toItem: sidebar, attribute: .top, multiplier: 1, constant: 0))
+        sidebar.addConstraint(NSLayoutConstraint(item: tabTable, attribute: .bottom, relatedBy: .equal, toItem: sidebar, attribute: .bottom, multiplier: 1, constant: 0))
+        sidebar.addConstraint(NSLayoutConstraint(item: tabTable, attribute: .leading, relatedBy: .equal, toItem: sidebar, attribute: .leading, multiplier: 1, constant: 0))
+        sidebar.addConstraint(NSLayoutConstraint(item: tabTable, attribute: .trailing, relatedBy: .equal, toItem: sidebar, attribute: .trailing, multiplier: 1, constant: 0))
         
-        let border = UIView(frame: CGRectMake(0, -navigationBarHeight, sidebarWidth, sidebar.frame.size.height + navigationBarHeight))
-        border.backgroundColor = UIColor.lightGrayColor()
+        let border = UIView(frame: CGRect(x: 0, y: -navigationBarHeight, width: sidebarWidth, height: sidebar.frame.size.height + navigationBarHeight))
+        border.backgroundColor = UIColor.lightGray
         border.translatesAutoresizingMaskIntoConstraints = false
         border.accessibilityIdentifier = "Border"
-        view.sendSubviewToBack(border)
+        view.sendSubview(toBack: border)
         
         sidebar.addSubview(border)
         sidebar.translatesAutoresizingMaskIntoConstraints = false
@@ -548,33 +548,33 @@ public class SabBarController: UITabBarController, UITableViewDataSource, UITabl
         view.backgroundColor = backgroundColor
         
         if hasNavigation {
-            view.addConstraint(NSLayoutConstraint(item: sidebar, attribute: .Top, relatedBy: .Equal, toItem: navigationBar, attribute: .Bottom, multiplier: 1, constant: 0))
-            view.bringSubviewToFront(navigationBar)
+            view.addConstraint(NSLayoutConstraint(item: sidebar, attribute: .top, relatedBy: .equal, toItem: navigationBar, attribute: .bottom, multiplier: 1, constant: 0))
+            view.bringSubview(toFront: navigationBar)
         } else {
-            view.addConstraint(NSLayoutConstraint(item: sidebar, attribute: .Top, relatedBy: .Equal, toItem: view, attribute: .Top, multiplier: 1, constant: 0))
+            view.addConstraint(NSLayoutConstraint(item: sidebar, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 0))
         }
         
-        view.addConstraint(NSLayoutConstraint(item: sidebar, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1, constant: 0))
-        view.addConstraint(NSLayoutConstraint(item: sidebar, attribute: .Leading, relatedBy: .Equal, toItem: view, attribute: .Leading, multiplier: 1, constant: 0))
+        view.addConstraint(NSLayoutConstraint(item: sidebar, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0))
+        view.addConstraint(NSLayoutConstraint(item: sidebar, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 0))
         
-        sidebarWidthConstraint = NSLayoutConstraint(item: sidebar, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: sidebarWidth)
+        sidebarWidthConstraint = NSLayoutConstraint(item: sidebar, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: sidebarWidth)
         view.addConstraint(sidebarWidthConstraint!)
         
         if separateHeader == false {
-            sidebar.addConstraint(NSLayoutConstraint(item: border, attribute: .Top, relatedBy: .Equal, toItem: sidebar, attribute: .Top, multiplier: 1, constant: 0))
+            sidebar.addConstraint(NSLayoutConstraint(item: border, attribute: .top, relatedBy: .equal, toItem: sidebar, attribute: .top, multiplier: 1, constant: 0))
         } else {
-            view.addConstraint(NSLayoutConstraint(item: border, attribute: .Top, relatedBy: .Equal, toItem: view, attribute: .Top, multiplier: 1, constant: 0))
+            view.addConstraint(NSLayoutConstraint(item: border, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 0))
         }
         
-        sidebar.addConstraint(NSLayoutConstraint(item: border, attribute: .Bottom, relatedBy: .Equal, toItem: sidebar, attribute: .Bottom, multiplier: 1, constant: 0))
-        sidebar.addConstraint(NSLayoutConstraint(item: border, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: (1 / UIScreen.mainScreen().scale)))
-        sidebar.addConstraint(NSLayoutConstraint(item: border, attribute: .Leading, relatedBy: .Equal, toItem: sidebar, attribute: .Trailing, multiplier: 1, constant: 0))
+        sidebar.addConstraint(NSLayoutConstraint(item: border, attribute: .bottom, relatedBy: .equal, toItem: sidebar, attribute: .bottom, multiplier: 1, constant: 0))
+        sidebar.addConstraint(NSLayoutConstraint(item: border, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: (1 / UIScreen.main.scale)))
+        sidebar.addConstraint(NSLayoutConstraint(item: border, attribute: .leading, relatedBy: .equal, toItem: sidebar, attribute: .trailing, multiplier: 1, constant: 0))
         
         self.contentView.translatesAutoresizingMaskIntoConstraints = false
-        view.addConstraint(NSLayoutConstraint(item: contentView, attribute: .Top, relatedBy: .Equal, toItem: view, attribute: .Top, multiplier: 1, constant: 0))
-        view.addConstraint(NSLayoutConstraint(item: contentView, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1, constant: 0))
-        view.addConstraint(NSLayoutConstraint(item: contentView, attribute: .Leading, relatedBy: .Equal, toItem: sidebar, attribute: .Trailing, multiplier: 1, constant: 0))
-        view.addConstraint(NSLayoutConstraint(item: contentView, attribute: .Trailing, relatedBy: .Equal, toItem: view, attribute: .Trailing, multiplier: 1, constant: 0))
+        view.addConstraint(NSLayoutConstraint(item: contentView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 0))
+        view.addConstraint(NSLayoutConstraint(item: contentView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0))
+        view.addConstraint(NSLayoutConstraint(item: contentView, attribute: .leading, relatedBy: .equal, toItem: sidebar, attribute: .trailing, multiplier: 1, constant: 0))
+        view.addConstraint(NSLayoutConstraint(item: contentView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: 0))
     }
 }
 
@@ -600,8 +600,8 @@ class SabBarCell: UITableViewCell {
     }
     
     func commonInit() {
-        selectionStyle = .None
-        backgroundColor = UIColor.clearColor()
+        selectionStyle = .none
+        backgroundColor = UIColor.clear
 
         let centeredView = UIView(frame: CGRect(x: 0, y: (self.frame.size.height - (imageHeight + labelHeight)) / 2.0 , width: self.frame.size.width, height: imageHeight + labelHeight))
         
@@ -609,47 +609,47 @@ class SabBarCell: UITableViewCell {
         
         tabImage = UIImageView(frame: CGRect(x: 0, y: 0, width: self.frame.size.width, height: imageHeight))
         tabImage.translatesAutoresizingMaskIntoConstraints = false
-        tabImage.contentMode = .Center
+        tabImage.contentMode = .center
         
         tabLabel = UILabel(frame: CGRect(x: 0, y: imageHeight, width: self.frame.size.width, height: labelHeight))
         tabLabel.translatesAutoresizingMaskIntoConstraints = false
-        tabLabel.textAlignment = .Center
-        tabLabel.font = UIFont.systemFontOfSize(10)
+        tabLabel.textAlignment = .center
+        tabLabel.font = UIFont.systemFont(ofSize: 10)
         
         centeredView.addSubview(tabImage)
         centeredView.addSubview(tabLabel)
         
-        centeredView.addConstraint(NSLayoutConstraint(item: tabImage, attribute: .Top, relatedBy: .Equal, toItem: centeredView, attribute: .Top, multiplier: 1, constant: 0))
-        centeredView.addConstraint(NSLayoutConstraint(item: tabImage, attribute: .Leading, relatedBy: .Equal, toItem: centeredView, attribute: .Leading, multiplier: 1, constant: 0))
-        centeredView.addConstraint(NSLayoutConstraint(item: tabImage, attribute: .Trailing, relatedBy: .Equal, toItem: centeredView, attribute: .Trailing, multiplier: 1, constant: 0))
-        tabImage.addConstraint(NSLayoutConstraint(item: tabImage, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: imageHeight))
+        centeredView.addConstraint(NSLayoutConstraint(item: tabImage, attribute: .top, relatedBy: .equal, toItem: centeredView, attribute: .top, multiplier: 1, constant: 0))
+        centeredView.addConstraint(NSLayoutConstraint(item: tabImage, attribute: .leading, relatedBy: .equal, toItem: centeredView, attribute: .leading, multiplier: 1, constant: 0))
+        centeredView.addConstraint(NSLayoutConstraint(item: tabImage, attribute: .trailing, relatedBy: .equal, toItem: centeredView, attribute: .trailing, multiplier: 1, constant: 0))
+        tabImage.addConstraint(NSLayoutConstraint(item: tabImage, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: imageHeight))
         
-        centeredView.addConstraint(NSLayoutConstraint(item: tabLabel, attribute: .Top, relatedBy: .Equal, toItem: tabImage, attribute: .Bottom, multiplier: 1, constant: 0))
-        centeredView.addConstraint(NSLayoutConstraint(item: tabLabel, attribute: .Bottom, relatedBy: .Equal, toItem: centeredView, attribute: .Bottom, multiplier: 1, constant: 0))
-        centeredView.addConstraint(NSLayoutConstraint(item: tabLabel, attribute: .Leading, relatedBy: .Equal, toItem: centeredView, attribute: .Leading, multiplier: 1, constant: 0))
-        centeredView.addConstraint(NSLayoutConstraint(item: tabLabel, attribute: .Trailing, relatedBy: .Equal, toItem: centeredView, attribute: .Trailing, multiplier: 1, constant: 0))
+        centeredView.addConstraint(NSLayoutConstraint(item: tabLabel, attribute: .top, relatedBy: .equal, toItem: tabImage, attribute: .bottom, multiplier: 1, constant: 0))
+        centeredView.addConstraint(NSLayoutConstraint(item: tabLabel, attribute: .bottom, relatedBy: .equal, toItem: centeredView, attribute: .bottom, multiplier: 1, constant: 0))
+        centeredView.addConstraint(NSLayoutConstraint(item: tabLabel, attribute: .leading, relatedBy: .equal, toItem: centeredView, attribute: .leading, multiplier: 1, constant: 0))
+        centeredView.addConstraint(NSLayoutConstraint(item: tabLabel, attribute: .trailing, relatedBy: .equal, toItem: centeredView, attribute: .trailing, multiplier: 1, constant: 0))
         
         self.addSubview(centeredView)
         
-        centeredView.addConstraint(NSLayoutConstraint(item: centeredView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: imageHeight + labelHeight))
-        self.addConstraint(NSLayoutConstraint(item: centeredView, attribute: .Width, relatedBy: .Equal, toItem: self, attribute: .Width, multiplier: 1, constant: 0))
-        self.addConstraint(NSLayoutConstraint(item: centeredView, attribute: .CenterX, relatedBy: .Equal, toItem: self, attribute: .CenterX, multiplier: 1, constant: 0))
-        self.addConstraint(NSLayoutConstraint(item: centeredView, attribute: .CenterY, relatedBy: .Equal, toItem: self, attribute: .CenterY, multiplier: 1, constant: 0))
+        centeredView.addConstraint(NSLayoutConstraint(item: centeredView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: imageHeight + labelHeight))
+        self.addConstraint(NSLayoutConstraint(item: centeredView, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 1, constant: 0))
+        self.addConstraint(NSLayoutConstraint(item: centeredView, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0))
+        self.addConstraint(NSLayoutConstraint(item: centeredView, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0))
     }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         if selected {
             tabImage.tintColor = tintColor
             tabLabel.textColor = tintColor
             tabImage.image = tabSelectedImage
         } else {
-            tabImage.tintColor = UIColor.lightGrayColor()
-            tabLabel.textColor = UIColor.lightGrayColor()
+            tabImage.tintColor = UIColor.lightGray
+            tabLabel.textColor = UIColor.lightGray
             tabImage.image = tabDeselectedImage
         }
     }

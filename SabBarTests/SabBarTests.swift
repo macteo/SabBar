@@ -28,7 +28,7 @@ class SabBarTests: XCTestCase, SabBarControllerDelegate {
     
     override func setUp() {
         super.setUp()
-        sabBarController.view.frame = CGRectMake(0, 0, 600, 600)
+        sabBarController.view.frame = CGRect(x: 0, y: 0, width: 600, height: 600)
         sabBarController.viewWillAppear(true)
         sabBarController.viewDidAppear(true)
         sabBarController.sabBarDelegate = self
@@ -46,7 +46,7 @@ class SabBarTests: XCTestCase, SabBarControllerDelegate {
     }
     
     func testToolbarTintColor() {
-        let tint = UIColor.redColor()
+        let tint = UIColor.red
         sabBarController.tabBar.barTintColor = tint
         sabBarController.buildSidebarView()
         XCTAssert(sabBarController.toolbar.barTintColor == tint)
@@ -59,11 +59,11 @@ class SabBarTests: XCTestCase, SabBarControllerDelegate {
         sabBarController.buildSidebarView()
         sabBarController.tabTable.reloadData()
         XCTAssert(sabBarController.tabBar.items?.count == 1)
-        XCTAssert(sabBarController.tabTable.numberOfRowsInSection(0) == 1)
+        XCTAssert(sabBarController.tabTable.numberOfRows(inSection: 0) == 1)
         
-        let indexPath = NSIndexPath(forRow: 0, inSection: 0)
-        sabBarController.tableView(sabBarController.tabTable, cellForRowAtIndexPath: indexPath)
-        if let cell = sabBarController.tabTable.cellForRowAtIndexPath(indexPath) as? SabBarCell {
+        let indexPath = IndexPath(row: 0, section: 0)
+        _ = sabBarController.tableView(sabBarController.tabTable, cellForRowAt: indexPath)
+        if let cell = sabBarController.tabTable.cellForRow(at: indexPath) as? SabBarCell {
             XCTAssert(cell.tabLabel.text == genericController.title)
         }
         
@@ -76,7 +76,7 @@ class SabBarTests: XCTestCase, SabBarControllerDelegate {
         sabBarController.viewControllers = [genericController, genericControllerTwo]
         sabBarController.tabTable.reloadData()
         XCTAssert(sabBarController.tabBar.items?.count == 2)
-        XCTAssert(sabBarController.tabTable.numberOfRowsInSection(0) == 2)
+        XCTAssert(sabBarController.tabTable.numberOfRows(inSection: 0) == 2)
     }
     
     func testChangeTab() {
@@ -88,20 +88,20 @@ class SabBarTests: XCTestCase, SabBarControllerDelegate {
         let selectedTab = sabBarController.tabBar.items![1]
         
         sabBarController.selectedIndex = 1
-        sabBarController.tabBar(sabBarController.tabBar, didSelectItem: selectedTab)
+        sabBarController.tabBar(sabBarController.tabBar, didSelect: selectedTab)
         
         XCTAssert(sabBarController.tabBar.selectedItem! == sabBarController.tabBar.items![1])
         
-        let indexPath = NSIndexPath(forRow: 1, inSection: 0)
+        let indexPath = IndexPath(row: 1, section: 0)
         
-        sabBarController.tableView(sabBarController.tabTable, cellForRowAtIndexPath: indexPath)
-        if let cell = sabBarController.tabTable.cellForRowAtIndexPath(indexPath) as? SabBarCell {
-            XCTAssert(cell.selected == true)
+        _ = sabBarController.tableView(sabBarController.tabTable, cellForRowAt: indexPath)
+        if let cell = sabBarController.tabTable.cellForRow(at: indexPath) as? SabBarCell {
+            XCTAssert(cell.isSelected == true)
         }
     }
     
     func testImageTint() {
-        let tint = UIColor.redColor()
+        let tint = UIColor.red
         sabBarController.imageTint = tint
         
         let genericController = UIViewController()
@@ -109,14 +109,14 @@ class SabBarTests: XCTestCase, SabBarControllerDelegate {
         sabBarController.buildSidebarView()
         sabBarController.tabTable.reloadData()
         
-        let indexPath = NSIndexPath(forRow: 0, inSection: 0)
-        sabBarController.tableView(sabBarController.tabTable, cellForRowAtIndexPath: indexPath)
-        if let cell = sabBarController.tabTable.cellForRowAtIndexPath(indexPath) as? SabBarCell {
+        let indexPath = IndexPath(row: 0, section: 0)
+        _ = sabBarController.tableView(sabBarController.tabTable, cellForRowAt: indexPath)
+        if let cell = sabBarController.tabTable.cellForRow(at: indexPath) as? SabBarCell {
             XCTAssert(cell.tintColor == tint)
         }
     }
     
-    func shouldShowSidebar(controller: SabBarController, traitCollection: UITraitCollection) -> Bool {
+    func shouldShowSidebar(_ controller: SabBarController, traitCollection: UITraitCollection) -> Bool {
         return true
     }
 }
