@@ -1,3 +1,7 @@
+## 1.0.0 (2016-11-22)
+
+* Swift 3 and Xcode 8 compability
+
 ## 0.9.1 (2016-01-22)
 
 * Updated readme with a note on subclassing.
