@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SabBarControllerDelegate 
 
     var window: UIWindow?
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    private func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         if let sabBarController = window?.rootViewController as? SabBarController {
             sabBarController.sabBarDelegate = self
@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SabBarControllerDelegate 
             
             let size : CGFloat = 40.0
             let userView = UIImageView(frame: CGRect(x: 0, y: 0, width: size, height: size))
-            userView.backgroundColor = UIColor.clearColor()
+            userView.backgroundColor = .clear
             userView.clipsToBounds = true
             
             let image = UIImage(named: "SabBar")
@@ -52,8 +52,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SabBarControllerDelegate 
         return true
     }
     
-    func shouldShowSidebar(controller: SabBarController, traitCollection: UITraitCollection) -> Bool {
-        if traitCollection.horizontalSizeClass == .Regular || traitCollection.verticalSizeClass == .Compact {
+    func shouldShowSidebar(_ controller: SabBarController, traitCollection: UITraitCollection) -> Bool {
+        if traitCollection.horizontalSizeClass == .regular || traitCollection.verticalSizeClass == .compact {
             return true
         } else {
             return false
