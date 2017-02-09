@@ -59,3 +59,4 @@ fastlane/report.xml
 fastlane/screenshots
 
 Sample-ObjC
+.DS_Store
