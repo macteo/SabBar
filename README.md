@@ -121,7 +121,7 @@ Add the *SabBar* Xcode project to your own. Then add the `SabBar` framework to t
 
 ### Manually as source file
 
-Just drag & drop the *SabBar.swift* source file from the *Sources* folder in your Xcode project.
+Just drag & drop the *SabBar*.swift* source files from the *Sources* folder in your Xcode project.
 
 ## Issues and bugs
 

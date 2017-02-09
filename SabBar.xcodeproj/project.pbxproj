@@ -10,8 +10,10 @@
 		95255EC81C4E3C790068FE1D /* SabBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 95255EC71C4E3C790068FE1D /* SabBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		95255ECF1C4E3C790068FE1D /* SabBar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95255EC41C4E3C790068FE1D /* SabBar.framework */; };
 		95255ED41C4E3C790068FE1D /* SabBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95255ED31C4E3C790068FE1D /* SabBarTests.swift */; };
-		95255EDF1C4E3CAD0068FE1D /* SabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95255EDE1C4E3CAD0068FE1D /* SabBar.swift */; };
+		95255EDF1C4E3CAD0068FE1D /* SabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95255EDE1C4E3CAD0068FE1D /* SabBarController.swift */; };
 		95255EE21C4E41E20068FE1D /* SabBar.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 95255EE11C4E41E20068FE1D /* SabBar.podspec */; };
+		956163C61E4C43B80087F608 /* SabBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956163C51E4C43B80087F608 /* SabBarCell.swift */; };
+		956163C81E4C44080087F608 /* SabBarControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956163C71E4C44080087F608 /* SabBarControllerDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,9 +33,11 @@
 		95255ECE1C4E3C790068FE1D /* SabBarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SabBarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		95255ED31C4E3C790068FE1D /* SabBarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SabBarTests.swift; sourceTree = "<group>"; };
 		95255ED51C4E3C790068FE1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		95255EDE1C4E3CAD0068FE1D /* SabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SabBar.swift; sourceTree = "<group>"; };
+		95255EDE1C4E3CAD0068FE1D /* SabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SabBarController.swift; sourceTree = "<group>"; };
 		95255EE01C4E40D80068FE1D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		95255EE11C4E41E20068FE1D /* SabBar.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SabBar.podspec; sourceTree = "<group>"; };
+		956163C51E4C43B80087F608 /* SabBarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SabBarCell.swift; sourceTree = "<group>"; };
+		956163C71E4C44080087F608 /* SabBarControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SabBarControllerDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +82,9 @@
 		95255EC61C4E3C790068FE1D /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				95255EDE1C4E3CAD0068FE1D /* SabBar.swift */,
+				95255EDE1C4E3CAD0068FE1D /* SabBarController.swift */,
+				956163C71E4C44080087F608 /* SabBarControllerDelegate.swift */,
+				956163C51E4C43B80087F608 /* SabBarCell.swift */,
 				95255EC71C4E3C790068FE1D /* SabBar.h */,
 				95255EC91C4E3C790068FE1D /* Info.plist */,
 			);
@@ -205,7 +211,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95255EDF1C4E3CAD0068FE1D /* SabBar.swift in Sources */,
+				956163C61E4C43B80087F608 /* SabBarCell.swift in Sources */,
+				95255EDF1C4E3CAD0068FE1D /* SabBarController.swift in Sources */,
+				956163C81E4C44080087F608 /* SabBarControllerDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

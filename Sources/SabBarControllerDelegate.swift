@@ -20,8 +20,35 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import PackageDescription
+import UIKit
 
-let package = Package(
-  name: "SabBar"
-)
+/**
+ Implement this protocol to control sidebar appearance based on the current trait
+ collection.
+ */
+
+@objc public protocol SabBarControllerDelegate {
+    
+    /**
+     Whenever the `traitCollection` is changed the `SabBarController` asks its
+     `sabBarDelegate` (if set) to specify the visibility of the sidebar. If the
+     sidebar is visible, the tabBar will be hidden and vice versa.
+     
+     Default values are:
+     
+     ```swift
+     if traitCollection.horizontalSizeClass == .Regular ||
+     traitCollection.verticalSizeClass == .Compact {
+     return true
+     } else {
+     return false
+     }
+     ```
+     
+     - parameter controller: the `SabBarController` that is performing the
+     request.
+     - parameter traitCollection: the current `UITraitCollection`.
+     - returns: if the sidebar should be visible or not.
+     */
+    func shouldShowSidebar(_ controller: SabBarController, traitCollection: UITraitCollection) -> Bool
+}
